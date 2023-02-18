@@ -1,0 +1,17 @@
+23:07:51 **** Rebuild of configuration Debug for project MultiplicationAlgorithm ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Main.o" "..\\src\\Main.cpp" 
+..\src\Main.cpp: In function 'int main()':
+..\src\Main.cpp:23:25: warning: for increment expression has no effect [-Wunused-value]
+  for (int i = 0; i++; i < n2_length) {
+                       ~~^~~~~~~~~~~
+..\src\Main.cpp:29:22: warning: for increment expression has no effect [-Wunused-value]
+   for (j = 0; j++; j < n1_length) {
+                    ~~^~~~~~~~~~~
+..\src\Main.cpp:34:8: warning: unused variable 'riporto' [-Wunused-variable]
+    int riporto = multi / 10;
+        ^~~~~~~
+g++ -o MultiplicationAlgorithm.exe "src\\Main.o" 
+
+23:07:51 Build Finished. 0 errors, 3 warnings. (took 802ms)
+

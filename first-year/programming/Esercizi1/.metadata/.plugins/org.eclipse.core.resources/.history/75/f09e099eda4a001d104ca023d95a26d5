@@ -1,0 +1,10 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int length;
+	cin >> length;
+	int array[]
+
+	return 0;
+}

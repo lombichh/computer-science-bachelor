@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int length;
+	cout << "Insert the length: ";
+	cin >> length;
+
+	int array[length];
+
+	return 0;
+}

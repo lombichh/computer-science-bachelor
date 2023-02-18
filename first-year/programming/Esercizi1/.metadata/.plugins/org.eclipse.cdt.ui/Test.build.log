@@ -1,0 +1,14 @@
+09:59:10 **** Incremental Build of configuration Debug for project Test ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o Library.o "..\\Library.cpp" 
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o Main.o "..\\Main.cpp" 
+g++ -o Test.exe Library.o Main.o 
+Main.o: In function `Z4testv':
+C:\Users\ASUS\Desktop\Uni\1th year\Programmazione\Esercizi\Test\Debug/../Library.cpp:12: multiple definition of `test()'
+Library.o:C:\Users\ASUS\Desktop\Uni\1th year\Programmazione\Esercizi\Test\Debug/../Library.cpp:12: first defined here
+Main.o: In function `main':
+C:\Users\ASUS\Desktop\Uni\1th year\Programmazione\Esercizi\Test\Debug/../Main.cpp:7: undefined reference to `test1()'
+collect2.exe: error: ld returned 1 exit status
+
+09:59:11 Build Failed. 3 errors, 0 warnings. (took 1s.316ms)
+

@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int x, y, z;
+
+	cout << "Insert 3 numbers: " << endl;
+	cin >> x >> y >> z;
+
+	cout << "\t" << x << "\t" << y << "\t" << z << endl
+			<< x << "\t" << x - x << "\t" << x - y << "\t" << x - z << endl
+			<< y << "\t" << y - x << "\t" << y - y << "\t" << y - z << endl
+			<< z << "\t" << z - x << "\t" << z - y << "\t" << z - z;
+}

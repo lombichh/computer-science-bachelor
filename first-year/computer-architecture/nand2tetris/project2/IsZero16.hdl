@@ -1,0 +1,19 @@
+/**
+ * IsZero16 chip: 
+ * out = 1 if in == 0
+ *       0 otherwise
+ */
+
+CHIP IsZero16 {
+    IN in[16];
+    OUT out;
+
+    PARTS:
+    // Check if first and last 8 bits are not all zero
+    Or8Way(in = in[0..7], out = or8out1);
+    Or8Way(in = in[8..15], out = or8out2);
+    // Check if one of the first or the last 8 bits are not all zero
+    Or(a = or8out1, b = or8out2, out = orout);
+    
+    Not(in = orout, out = out);
+}
