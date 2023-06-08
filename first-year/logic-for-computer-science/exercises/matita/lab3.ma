@@ -1,38 +1,4 @@
-(**************************************************************************)
-(*       ___                                                          *)
-(*      ||M||                                                             *)
-(*      ||A||       A project by Andrea Asperti                           *)
-(*      ||T||                                                             *)
-(*      ||I||       Developers:                                           *)
-(*      ||T||       A.Asperti, C.Sacerdoti Coen,                          *)
-(*      ||A||       E.Tassi, S.Zacchiroli                                 *)
-(*      \   /                                                             *)
-(*       \ /        This file is distributed under the terms of the       *)
-(*        v         GNU Lesser General Public License Version 2.1         *)
-(*                                                                        *)
-(**************************************************************************)
-
-(* Esercizio 0
-   ===========
-   
-   Compilare i seguenti campi:
-   
-   Nome1: Enis
-   Cognome1: Brajevic
-   Matricola1: 0001070214
-   Account1: enis.brajevic
-   
-   Nome2: Matteo
-   Cognome2: Lombardi
-   Matricola2: 0001071217
-   Account2: matteo.lombardi12
-
-   Nota: salvate spesso per evitare la perdita del lavoro svolto in caso di
-   crash dell'applicazione.
-
-*)
-
-
+(* Author: Matteo Lombardi *)
 
 (* ATTENZIONE
    ==========

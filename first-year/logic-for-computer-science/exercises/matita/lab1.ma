@@ -1,30 +1,4 @@
-(**************************************************************************)
-(*       ___                                                              *)
-(*      ||M||                                                             *)
-(*      ||A||       A project by Andrea Asperti                           *)
-(*      ||T||                                                             *)
-(*      ||I||       Developers:                                           *)
-(*      ||T||         The HELM team.                                      *)
-(*      ||A||         http://helm.cs.unibo.it                             *)
-(*      \   /                                                             *)
-(*       \ /        This file is distributed under the terms of the       *)
-(*        v         GNU General Public License Version 2                  *)
-(*                                                                        *)
-(**************************************************************************)
-
-(*
-
- Componenti del gruppo (completare):
-
- * Nome1: Enis
- * Cognome1: Brajevic
- * Numero di matricola1: 0001070214
-
- * Nome2: Riccardo
- * Cognome2: Berti
- * Numero di matricola2: 0001071382
-
-*)
+(* Author: Matteo Lombardi *)
 
 (* Saltate le righe seguenti dove vengono dati gli assiomi e definite
    le notazioni e cercate Exercise 1. *)

@@ -1,3 +1,5 @@
+(* Author: Matteo Lombardi *)
+
 (* Esercizio 1
    ===========
    Dimostrare l'associatività della somma per induzione strutturale su x.
