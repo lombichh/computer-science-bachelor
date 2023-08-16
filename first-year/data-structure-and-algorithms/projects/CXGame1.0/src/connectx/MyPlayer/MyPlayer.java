@@ -1,95 +1,114 @@
 package connectx.MyPlayer;
 
 import connectx.CXBoard;
+import connectx.CXCellState;
 import connectx.CXPlayer;
 
 import java.util.ArrayList;
-
-import static connectx.MyPlayer.GameTreeUtils.createGameTree;
-import static connectx.MyPlayer.GameTreeUtils.getGameTreeNodesNumber;
+import java.util.concurrent.TimeoutException;
 
 public class MyPlayer implements CXPlayer {
     private boolean first;
-    private Integer[] availableColumns;
+    private TimeManager timeManager;
+    private GameTreeCacheManager gameTreeCacheManager;
 
-    /* Default empty constructor */
-    public MyPlayer() {
-    }
+    public static int alphaBetaCounter;
+
+    public MyPlayer() {}
 
     @Override
     public void initPlayer(int M, int N, int X, boolean first, int timeout_in_secs) {
         this.first = first;
+        this.timeManager = new TimeManager(timeout_in_secs);
+        this.gameTreeCacheManager = new GameTreeCacheManager();
     }
 
-    /* Selects a random column */
+    /**
+     * Returns the index of the column to be selected.
+     */
     @Override
     public int selectColumn(CXBoard B) {
-        this.availableColumns = B.getAvailableColumns();
+        // Reset the time and select the first available column
+        timeManager.resetTime();
+        int columnIndex = B.getAvailableColumns()[0];
 
-        CXBoardCopy BCopy = new CXBoardCopy(B.M, B.N, B.X);
-        BCopy.copyFromCXBoard(B);
-        GameTreeNode gameTree = createGameTree(BCopy);
+        // IterativeDeepening
+        try {
+            System.err.println("---- New move ----");
 
-        // get column number checking max miniMax of the childNodes
+            int gameTreeDepth = 2;
+            GameTreeNode gameTree;
 
-        ArrayList<GameTreeNode> childNodes = gameTree.getChildNodes();
-        int maxValue = miniMax(childNodes.get(0), false);
-        int columnNumber = availableColumns[0];
+            while (gameTreeDepth <= GameTreeUtils.getGameTreeMaxDepth(B)) {
+                gameTreeCacheManager.resetCache();
+                gameTree = GameTreeUtils
+                        .createGameTreeCaller(B, gameTreeDepth, gameTreeCacheManager, timeManager);
+                System.err.println(" - Game tree depth: " + GameTreeUtils.getGameTreeDepth(gameTree));
+                System.err.println(" - Game tree nodes number: " + GameTreeUtils.getGameTreeNodesNumber(gameTree));
+                columnIndex = getBestColumnIndex(gameTree);
 
-        for (int i = 1; i < childNodes.size(); i++) {
-            int nodeValue = miniMax(childNodes.get(i), false);
-            if (nodeValue > maxValue) {
-                maxValue = nodeValue;
-                columnNumber = availableColumns[i];
+                gameTreeDepth++;
             }
+        } catch (TimeoutException ex) {
+            System.err.println("xxxx Exception xxxx");
+            return columnIndex;
         }
 
-        return columnNumber;
-    }
-
-    int miniMax(GameTreeNode node, boolean isMyPlayerTurn) {
-        int nodeValue;
-
-        if (GameTreeUtils.isLeaf(node)) nodeValue = evaluate(node);
-        else if (isMyPlayerTurn) {
-            ArrayList<GameTreeNode> childNodes = node.getChildNodes();
-
-            nodeValue = miniMax(childNodes.get(0), false);
-            for (int i = 1; i < childNodes.size(); i++) {
-                nodeValue = Math.max(
-                        nodeValue,
-                        miniMax(childNodes.get(i), false)
-                );
-            }
-        } else {
-            ArrayList<GameTreeNode> childNodes = node.getChildNodes();
-
-            nodeValue = miniMax(childNodes.get(0), true);
-            for (int i = 1; i < childNodes.size(); i++) {
-                nodeValue = Math.min(
-                        nodeValue,
-                        miniMax(childNodes.get(i), true)
-                );
-            }
-        }
-
-        return nodeValue;
-    }
-
-    int evaluate(GameTreeNode node) {
-        switch (node.getGameState()) {
-            case WINP1:
-                if (first) return 1;
-                else return -1;
-            case WINP2:
-                if (first) return -1;
-                else return 1;
-            default:
-                return 0;
-        }
+        return columnIndex;
     }
 
     public String playerName() {
         return "MyPlayer";
+    }
+
+    /**
+     * Returns the index of the column with the best value.
+     */
+    private int getBestColumnIndex(GameTreeNode gameTree) throws TimeoutException {
+        alphaBetaCounter = 0;
+
+        ArrayList<GameTreeNode> childNodes = gameTree.getChildNodes();
+
+        // Initialize maxValue with the value of the first available column
+        int colValue = Evaluator.alphaBeta(
+                childNodes.get(0),
+                !first,
+                Evaluator.WINP2VALUE,
+                Evaluator.WINP1VALUE,
+                GameTreeUtils.getGameTreeDepth(gameTree) - 1,
+                gameTreeCacheManager,
+                timeManager
+        );
+        int columnIndex = gameTree.getBoard().getAvailableColumns()[0];
+
+        // Get the index of the column with the best value by calling minimax on every available column
+        for (int i = 1; i < childNodes.size(); i++) {
+            int nodeValue = Evaluator.alphaBeta(
+                    childNodes.get(i),
+                    !first,
+                    Evaluator.WINP2VALUE,
+                    Evaluator.WINP1VALUE,
+                    GameTreeUtils.getGameTreeDepth(gameTree) - 1,
+                    gameTreeCacheManager,
+                    timeManager
+            );
+
+            // If first player maximize, otherwise minimize
+            if (first) {
+                if (nodeValue > colValue) {
+                    colValue = nodeValue;
+                    columnIndex = gameTree.getBoard().getAvailableColumns()[i];
+                }
+            } else {
+                if (nodeValue < colValue) {
+                    colValue = nodeValue;
+                    columnIndex = gameTree.getBoard().getAvailableColumns()[i];
+                }
+            }
+        }
+
+        System.err.println(" - Minimax counter: " + alphaBetaCounter);
+
+        return columnIndex;
     }
 }
