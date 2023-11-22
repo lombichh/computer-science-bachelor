@@ -1,0 +1,310 @@
+---- COMMIT: change evaluate method, remove cache 
+and alphabeta calling method ----
+
+MyPlayer Score: 8 Won: 2 Lost: 6 Draw: 2 Error: 0
+AFLP Score: 20 Won: 6 Lost: 2 Draw: 2 Error: 0
+
+MyPlayer Score: 22 Won: 7 Lost: 2 Draw: 1 Error: 0
+AFLP Score: 7 Won: 2 Lost: 7 Draw: 1 Error: 0
+
+MyPlayer Score: 5 Won: 1 Lost: 7 Draw: 2 Error: 0
+AFLP Score: 23 Won: 7 Lost: 1 Draw: 2 Error: 0
+
+
+
+AFLP Score: 24 Won: 8 Lost: 2 Draw: 0 Error: 0
+MyPlayer Score: 6 Won: 2 Lost: 8 Draw: 0 Error: 0
+
+AFLP Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+MyPlayer Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+
+AFLP Score: 22 Won: 6 Lost: 2 Draw: 1 Error: 0
+MyPlayer Score: 7 Won: 2 Lost: 6 Draw: 1 Error: 1
+
+
+
+
+---- COMMIT: add improved cache ----
+
+MyPlayer Score: 28 Won: 9 Lost: 0 Draw: 1 Error: 0
+AFLP Score: 1 Won: 0 Lost: 9 Draw: 1 Error: 0
+
+MyPlayer Score: 12 Won: 4 Lost: 6 Draw: 0 Error: 0
+AFLP Score: 18 Won: 6 Lost: 4 Draw: 0 Error: 0
+
+MyPlayer Score: 24 Won: 8 Lost: 2 Draw: 0 Error: 0
+AFLP Score: 6 Won: 2 Lost: 8 Draw: 0 Error: 0
+
+MyPlayer Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+AFLP Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+
+MyPlayer Score: 3 Won: 1 Lost: 9 Draw: 0 Error: 0
+AFLP Score: 27 Won: 9 Lost: 1 Draw: 0 Error: 0
+
+
+
+AFLP Score: 24 Won: 8 Lost: 2 Draw: 0 Error: 0
+MyPlayer Score: 6 Won: 2 Lost: 8 Draw: 0 Error: 0
+
+AFLP Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+MyPlayer Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+
+AFLP Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+MyPlayer Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+
+AFLP Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+MyPlayer Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+
+
+
+
+---- COMMIT: remove improved cache ----
+
+MyPlayer Score: 15 Won: 5 Lost: 5 Draw: 0 Error: 0
+AFLP Score: 15 Won: 5 Lost: 5 Draw: 0 Error: 0
+
+
+
+AFLP Score: 21 Won: 7 Lost: 3 Draw: 0 Error: 0
+MyPlayer Score: 9 Won: 3 Lost: 7 Draw: 0 Error: 0
+
+
+
+
+---- COMMIT: clean evaluator code ----
+
+MyPlayer Score: 4 Won: 0 Lost: 6 Draw: 4 Error: 0
+AFLP Score: 22 Won: 6 Lost: 0 Draw: 4 Error: 0
+
+
+
+
+---- COMMIT: same AFLP alphabeta counter ----
+
+MyPlayer Score: 27 Won: 9 Lost: 1 Draw: 0 Error: 0
+AFLP Score: 3 Won: 1 Lost: 9 Draw: 0 Error: 0
+
+MyPlayer Score: 3 Won: 0 Lost: 7 Draw: 3 Error: 0
+AFLP Score: 24 Won: 7 Lost: 0 Draw: 3 Error: 0
+
+MyPlayer Score: 18 Won: 5 Lost: 2 Draw: 3 Error: 0
+AFLP Score: 9 Won: 2 Lost: 5 Draw: 3 Error: 0
+
+
+
+MyPlayer Score: 21 Won: 7 Lost: 3 Draw: 0 Error: 0
+MxLxPlayer Score: 9 Won: 3 Lost: 7 Draw: 0 Error: 0
+
+MyPlayer Score: 3 Won: 1 Lost: 9 Draw: 0 Error: 0
+MxLxPlayer Score: 27 Won: 9 Lost: 1 Draw: 0 Error: 0
+
+
+
+
+---- COMMIT: add improved cache ----
+
+MyPlayer Score: 3 Won: 1 Lost: 9 Draw: 0 Error: 0
+AFLP Score: 27 Won: 9 Lost: 1 Draw: 0 Error: 0
+
+MyPlayer Score: 3 Won: 1 Lost: 9 Draw: 0 Error: 0
+AFLP Score: 27 Won: 9 Lost: 1 Draw: 0 Error: 0
+
+MyPlayer Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+AFLP Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+
+MyPlayer Score: 28 Won: 9 Lost: 0 Draw: 1 Error: 0
+MxLxPlayer Score: 1 Won: 0 Lost: 9 Draw: 1 Error: 0
+
+MyPlayer Score: 28 Won: 9 Lost: 0 Draw: 1 Error: 0
+MxLxPlayer Score: 1 Won: 0 Lost: 9 Draw: 1 Error: 0
+
+
+
+AFLP Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+MyPlayer Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+
+MxLxPlayer Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+MyPlayer Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+
+
+
+
+---- COMMIT: evaluate all the sequence lenght in the evaluator ----
+
+MyPlayer Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+AFLP Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+
+MyPlayer Score: 21 Won: 7 Lost: 3 Draw: 0 Error: 0
+AFLP Score: 9 Won: 3 Lost: 7 Draw: 0 Error: 0
+
+MyPlayer Score: 4 Won: 0 Lost: 8 Draw: 1 Error: 0
+AFLP Score: 25 Won: 8 Lost: 0 Draw: 1 Error: 1
+
+MyPlayer Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+AFLP Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+
+MyPlayer Score: 6 Won: 2 Lost: 8 Draw: 0 Error: 0
+AFLP Score: 24 Won: 8 Lost: 2 Draw: 0 Error: 0
+
+5 4 5
+
+MyPlayer Score: 10 Won: 0 Lost: 0 Draw: 10 Error: 0
+AFLP Score: 10 Won: 0 Lost: 0 Draw: 10 Error: 0
+
+
+
+-- without cache --
+
+MyPlayer Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+AFLP Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+
+MyPlayer Score: 24 Won: 8 Lost: 2 Draw: 0 Error: 0
+AFLP Score: 6 Won: 2 Lost: 8 Draw: 0 Error: 0
+
+MyPlayer Score: 17 Won: 5 Lost: 3 Draw: 2 Error: 0
+AFLP Score: 11 Won: 3 Lost: 5 Draw: 2 Error: 0
+
+
+
+---- COMMIT: add blocking enemy check in the evaluator ----
+
+MyPlayer Score: 4 Won: 1 Lost: 8 Draw: 1 Error: 0
+AFLP Score: 25 Won: 8 Lost: 1 Draw: 1 Error: 0
+
+
+
+
+---- COMMIT: add sequence position check in the evaluator ----
+
+MyPlayer Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+AFLP Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+
+
+
+
+---- sequence position 2 ----
+
+MyPlayer Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+AFLP Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+
+
+da testare ultima modifica con 6 7 4 con cache e senza
+
+6 7 4 senza cache
+
+MyPlayer Score: 21 Won: 7 Lost: 2 Draw: 0 Error: 1
+AFLP Score: 9 Won: 2 Lost: 7 Draw: 0 Error: 0
+
+MyPlayer Score: 24 Won: 8 Lost: 1 Draw: 0 Error: 1
+AFLP Score: 6 Won: 1 Lost: 8 Draw: 0 Error: 0
+
+MyPlayer Score: 24 Won: 8 Lost: 2 Draw: 0 Error: 0
+MxLxPlayer Score: 6 Won: 2 Lost: 8 Draw: 0 Error: 0
+
+
+
+AFLP Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+MyPlayer Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+
+MxLxPlayer Score: 3 Won: 1 Lost: 9 Draw: 0 Error: 0
+MyPlayer Score: 27 Won: 9 Lost: 1 Draw: 0 Error: 0
+
+MyPlayer Score: 27 Won: 9 Lost: 1 Draw: 0 Error: 0
+L1 Score: 3 Won: 1 Lost: 9 Draw: 0 Error: 0
+
+
+
+AFLP Score: 3 Won: 1 Lost: 9 Draw: 0 Error: 0
+MyPlayer Score: 27 Won: 9 Lost: 1 Draw: 0 Error: 0
+
+MyPlayer Score: 3 Won: 1 Lost: 9 Draw: 0 Error: 0
+MxLxPlayer Score: 27 Won: 9 Lost: 1 Draw: 0 Error: 0
+
+L1 Score: 4 Won: 1 Lost: 8 Draw: 1 Error: 0
+MyPlayer Score: 25 Won: 8 Lost: 1 Draw: 1 Error: 0
+
+
+
+
+25 25 10 senza cache
+
+MyPlayer Score: 1 Won: 0 Lost: 0 Draw: 1 Error: 0
+AFLP Score: 1 Won: 0 Lost: 0 Draw: 1 Error: 0
+
+pesi 50, 20, 10, 5 con openBefore + openAfter
+
+MyPlayer Score: 6 Won: 2 Lost: 7 Draw: 0 Error: 1
+AFLP Score: 24 Won: 7 Lost: 2 Draw: 0 Error: 0
+
+pesi 50, 20, 10, 5 con openBefore || openAfter
+
+MyPlayer Score: 6 Won: 2 Lost: 7 Draw: 0 Error: 1
+AFLP Score: 24 Won: 7 Lost: 2 Draw: 0 Error: 0
+
+MyPlayer Score: 6 Won: 2 Lost: 7 Draw: 0 Error: 1
+AFLP Score: 24 Won: 7 Lost: 2 Draw: 0 Error: 0
+
+pesi 50, 20, 10, 5 con openBefore || openAfter improved
+
+MyPlayer Score: 6 Won: 2 Lost: 7 Draw: 0 Error: 1
+AFLP Score: 24 Won: 7 Lost: 2 Draw: 0 Error: 0
+
+MyPlayer Score: 15 Won: 5 Lost: 5 Draw: 0 Error: 0
+MxLxPlayer Score: 15 Won: 5 Lost: 5 Draw: 0 Error: 0
+
+
+
+MxLxPlayer Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+MyPlayer Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+
+AFLP Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+MyPlayer Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+
+
+
+---- COMMIT: add priority queue for pre evaluation inside alpha beta ----
+
+MyPlayer Score: 27 Won: 9 Lost: 1 Draw: 0 Error: 0
+AFLP Score: 3 Won: 1 Lost: 9 Draw: 0 Error: 0
+
+MyPlayer Score: 27 Won: 9 Lost: 1 Draw: 0 Error: 0
+AFLP Score: 3 Won: 1 Lost: 9 Draw: 0 Error: 0
+
+MyPlayer Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+MxLxPlayer Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+
+
+
+AFLP Score: 21 Won: 7 Lost: 3 Draw: 0 Error: 0
+MyPlayer Score: 9 Won: 3 Lost: 7 Draw: 0 Error: 0
+
+AFLP Score: 9 Won: 3 Lost: 7 Draw: 0 Error: 0
+MyPlayer Score: 21 Won: 7 Lost: 3 Draw: 0 Error: 0
+
+AFLP Score: 12 Won: 4 Lost: 6 Draw: 0 Error: 0
+MyPlayer Score: 18 Won: 6 Lost: 4 Draw: 0 Error: 0
+
+MxLxPlayer Score: 3 Won: 1 Lost: 9 Draw: 0 Error: 0
+MyPlayer Score: 27 Won: 9 Lost: 1 Draw: 0 Error: 0
+
+
+
+---- COMMIT: remove system.err.prinln and code refactor ----
+
+MyPlayer Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+AFLP Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+
+MyPlayer Score: 24 Won: 8 Lost: 2 Draw: 0 Error: 0
+AFLP Score: 6 Won: 2 Lost: 8 Draw: 0 Error: 0
+
+LombEnis Score: 30 Won: 10 Lost: 0 Draw: 0 Error: 0
+MxLxPlayer Score: 0 Won: 0 Lost: 10 Draw: 0 Error: 0
+
+MxLxPlayer Score: 3 Won: 1 Lost: 9 Draw: 0 Error: 0
+LombEnis Score: 27 Won: 9 Lost: 1 Draw: 0 Error: 0
+
+AFLP Score: 18 Won: 6 Lost: 4 Draw: 0 Error: 0
+MyPlayer Score: 12 Won: 4 Lost: 6 Draw: 0 Error: 0
+
+AFLP Score: 12 Won: 4 Lost: 6 Draw: 0 Error: 0
+MyPlayer Score: 18 Won: 6 Lost: 4 Draw: 0 Error: 0
