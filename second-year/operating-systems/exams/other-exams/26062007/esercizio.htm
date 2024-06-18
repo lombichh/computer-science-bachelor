@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Linux)">
+	<META NAME="AUTHOR" CONTENT="Stefano Monti">
+	<META NAME="CREATED" CONTENT="20070626;11224800">
+	<META NAME="CHANGED" CONTENT="16010102;0">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { size: 21cm 29.7cm; margin: 2cm }
+		P { margin-bottom: 0.21cm; direction: ltr; color: #000000; widows: 0; orphans: 0 }
+		P.western { font-family: "Nimbus Roman No9 L", "Times New Roman", serif; font-size: 12pt; so-language: it-IT }
+		P.cjk { font-family: "DejaVu Sans"; font-size: 12pt; so-language:  }
+		P.ctl { font-family: "DejaVu Sans"; font-size: 12pt; so-language:  }
+		H2 { margin-bottom: 0.21cm; direction: ltr; color: #000000; widows: 0; orphans: 0 }
+		H2.western { font-family: "Nimbus Roman No9 L", "Times New Roman", serif; so-language: it-IT }
+		H2.cjk { font-family: "DejaVu Sans"; so-language:  }
+		H2.ctl { font-family: "DejaVu Sans"; so-language:  }
+		H3 { margin-bottom: 0.21cm; direction: ltr; color: #000000; widows: 0; orphans: 0 }
+		H3.western { font-family: "Nimbus Roman No9 L", "Times New Roman", serif; so-language: it-IT }
+		H3.cjk { font-family: "DejaVu Sans"; so-language:  }
+		H3.ctl { font-family: "DejaVu Sans"; so-language:  }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="it-IT" TEXT="#000000" DIR="LTR">
+<H3 CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=4><B>Sistemi
+Operativi L-A </B></FONT></FONT>
+</H3>
+<H2 CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=5><B>Compito
+di marted&igrave; 26 Giugno 2007</B></FONT></FONT></H2>
+<P CLASS="western" ALIGN=CENTER>CdS in Ingegneria Informatica - Prof.
+Paolo Bellavista</P>
+<P CLASS="western" ALIGN=CENTER>&nbsp;</P>
+<P CLASS="western" ALIGN=CENTER><STRONG><FONT FACE="Arial, sans-serif">Compito
+A - Parte di Programmazione di Sistema </FONT></STRONG>(16 punti)</P>
+<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial, sans-serif">Si
+scriva un programma C che, utilizzando le System Call del sistema
+operativo UNIX, abbia un'interfaccia del tipo:</FONT></P>
+<P CLASS="western" ALIGN=CENTER><B><FONT FACE="Courier New">reviewer</FONT></B>
+<B><FONT FACE="Courier New">progetto rapporto</FONT></B></P>
+<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial, sans-serif">dove</FONT>
+<FONT FACE="Arial, sans-serif"><B>progetto </B>&egrave; un nome
+assoluto di file gi&agrave; esistente nel file system e <B>rapporto
+</B>un nome assoluto di file da crearsi come risultato
+dell'esecuzione del programma concorrente. <B>progetto</B> &egrave;
+un file che contiene la descrizione di un progetto di ricerca (file
+di testo organizzato in righe) che deve essere valutato
+concorrentemente da due processi in parallelo. Dopo aver effettuato
+gli opportuni controlli sugli argomenti, il processo iniziale <B>P0</B>
+(moderatore) deve generare i due processi valutatori <B>P1</B>
+(figlio) e <B>P2</B> (nipote). </FONT>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial, sans-serif">Per
+valutare il progetto, <B>P1</B></FONT> <FONT FACE="Arial, sans-serif">e
+<B>P2 </B>devono leggere in maniera concorrente il contenuto del file
+<B>progetto</B>, giungere in maniera indipendente l'uno dall'altro ad
+una opinione sul progetto stesso, e scrivere tale opinione sul file
+<B>rapporto</B>. In particolare,</FONT> <FONT FACE="Arial, sans-serif"><B>P1</B>
+valuta <B>progetto</B> andando a contare le occorrenze della parola
+&quot;wireless&quot; nelle righe di posizione pari; la sua
+valutazione &egrave; semplicemente tale numero di occorrenze.
+Analogamente, <B>P2</B> valuta <B>progetto</B> andando a contare le
+occorrenze della parola &quot;mobile&quot; nelle righe di posizione
+pari. Una volta calcolata la valutazione, in modo indipendente,
+ciascuno dei due processi deve scrivere sul file <B>rapporto</B>
+&quot;Sono il figlio/nipote e la mia valutazione &egrave;:\n xxx\n&quot;;
+inoltre la valutazione deve essere comunicata al padre tramite pipe. </FONT>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY>&nbsp;</P>
+<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial, sans-serif">Il
+padre moderatore deve ricevere le due comunicazioni e convincere
+(tramite invio di segnale) il processo valutatore con la valutazione
+pi&ugrave; bassa ad accettare il giudizio maggiormente benevolo
+dell'altro valutatore. Il valutatore &quot;cattivo&quot; &egrave;
+costretto a scrivere in fondo al file <B>rapporto</B> &quot;Sono il
+figlio/nipote e accetto la decisione unanime\n&quot;.</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY>&nbsp;</P>
+<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial, sans-serif">In
+caso di pressione di &lt;CTRL-C&gt; da parte dell'utente PRIMA che il
+moderatore abbia letto le valutazioni, il progetto deve essere
+considerato valutato positivamente e ogni processo deve scrivere
+&quot;Accettazione unanime\n&quot; sul file <B>rapporto</B>, che al
+termine dell'esecuzione deve contenere solo ed esclusivamente le
+suddette tre righe di testo. </FONT>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY>&nbsp;</P>
+<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=3>Si
+facciano le scelte di sincronizzazione dei processi ritenute pi&ugrave;
+opportune, cercando di sequenzializzare il meno possibile le varie
+operazioni richieste.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY>&nbsp;</P>
+<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=3>PS:
+per la ricerca di una stringa all'interno di un'altra stringa, si
+consideri la possibilit&agrave; di utilizzare la funzione di libreria
+</FONT></FONT>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY><STRONG><FONT FACE="Arial, Helvetica, sans-serif">char*
+strstr(char* where, char* s)</FONT></STRONG></P>
+<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=3>che
+cerca la stringa s, correttamente terminata, all'interno della
+stringa where, sempre correttamente terminata. strstr() restituisce
+NULL nel caso in cui s non sia contenuta in where, altrimenti il
+puntatore al primo carattere di where da cui parte la stringa s.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY><BR><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER><STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT COLOR="#000000"><FONT FACE="Arial, sans-serif">Compito
+C - </FONT><FONT FACE="Arial, Helvetica, sans-serif">Parte di
+Programmazione File Comandi UNIX </FONT></FONT></FONT></SPAN></STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, Helvetica, sans-serif"><FONT COLOR="#000000">(8
+punti)</FONT></FONT></FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Si
+scriva un file comandi in bash Shell di Linux che abbia
+l'interfaccia: </FONT></FONT>
+</P>
+<P CLASS="western" ALIGN=CENTER><STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000"><I>oddeven</I>
+absdir pari dispari</FONT></FONT></FONT></SPAN></STRONG></P>
+<P CLASS="western" ALIGN=JUSTIFY><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">dove
+</FONT></FONT></FONT></SPAN><STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">absdir</FONT></FONT></FONT></SPAN></STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">
+&egrave; il nome assoluto di un direttorio esistente nel filesystem,
+</FONT></FONT></FONT></SPAN><STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">pari</FONT></FONT></FONT></SPAN></STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">
+e </FONT></FONT></FONT></SPAN><STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">dispari</FONT></FONT></FONT></SPAN></STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">
+sono nomi assoluti di file </FONT></FONT></FONT></SPAN><STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">non</FONT></FONT></FONT></SPAN></STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">
+esistenti nel filesystem. Si svolgano gli opportuni controlli sugli
+argomenti di invocazione del file comandi.<BR>Il compito del file
+comandi &egrave; quello di esplorare la gerarchia individuata dal
+direttorio </FONT></FONT></FONT></SPAN><STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">absdir</FONT></FONT></FONT></SPAN></STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">,
+ossia il direttorio stesso e i suoi sottoalberi. Per ogni direttorio
+esplorato, il file comandi deve contare il numero di sottodirettori
+contenuti; nel caso tale numero sia pari e contemporaneamente sia
+presente all'interno del direttorio stesso un file regolare (ossia n&eacute;
+direttorio n&eacute; link) con un nome di lunghezza pari a 5
+caratteri, il file comandi deve scrivere sul file </FONT></FONT></FONT></SPAN><STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">pari</FONT></FONT></FONT></SPAN></STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">
+il nome assoluto del direttorio corrente e il numero di
+sottodirettori contati. Nel caso duale in cui il numero di
+sottodirettori sia dispari e contemporaneamente sia presente
+all'interno del direttorio un file regolare con un nome di lunghezza
+pari a 5 caratteri, il file comandi deve scrivere sul file </FONT></FONT></FONT></SPAN><STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">dispari</FONT></FONT></FONT></SPAN></STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">
+il nome assoluto del direttorio corrente e il numero di
+sottodirettori contati. <BR>Qualora nessun direttorio sia presente
+all'interno del direttorio esplorato, il nome del direttorio non deve
+essere riportato nei file di output.<BR>Si noti che i file </FONT></FONT></FONT></SPAN><STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">pari</FONT></FONT></FONT></SPAN></STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">
+e </FONT></FONT></FONT></SPAN><STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">dispari</FONT></FONT></FONT></SPAN></STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">
+devono essere creati solamente nel caso in cui almeno un direttorio
+debba essere memorizzato al loro interno.<BR>Al termine
+dell'esplorazione, se il file </FONT></FONT></FONT></SPAN><STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">pari</FONT></FONT></FONT></SPAN></STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">
+non &egrave; stato creato, il file comandi deve stampare il messaggio
+di avvertimento &quot;File pari non creato&quot;; se il file </FONT></FONT></FONT></SPAN><STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">dispari</FONT></FONT></FONT></SPAN></STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000">
+non &egrave; stato creato, il file comandi deve stampare il messaggio
+di avvertimento &quot;File dispari non creato&quot;. Se invece tali
+file sono stati creati, essi devono essere ordinati (in maniera
+decrescente) secondo il valore del numero di sottodirettori contenuti
+nei direttori inclusi.</FONT></FONT></FONT></SPAN></P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER><STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT COLOR="#000000"><FONT FACE="Arial, sans-serif">Compito
+B - </FONT><FONT FACE="Arial, Helvetica, sans-serif">Parte di
+Programmazione Java Thread </FONT></FONT></FONT></SPAN></STRONG><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, Helvetica, sans-serif"><FONT COLOR="#000000">(8
+punti)</FONT></FONT></FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=3>Si
+scriva un programma Java che utilizzi lo strumento dei Thread per
+realizzare un sistema di stampa di documenti.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=3>Prima
+di poter essere accettati per la stampa, i documenti devono attendere
+in coda il proprio turno.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, Helvetica, sans-serif"><FONT COLOR="#000000">Inoltre,
+prima dell'accettazione per la stampa, il sistema attribuisce a ogni
+documento un <B>istante di stampa previsto</B>, calcolato sommando
+semplicemente i tempi di stampa dei documenti <B>precedentemente
+accettati</B>. Si considerino due tipologie di documenti: testi e
+immagini. La prima ha un tempo di stampa pari a 7 unit&agrave; di
+tempo, la seconda pari a 15.</FONT></FONT></FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, Helvetica, sans-serif"><FONT COLOR="#000000">I
+<B>testi </B>hanno priorit&agrave; maggiore rispetto alle <B>immagini</B>:
+una immagine viene accettata per la stampa solamente nel caso in cui
+non ci siano testi in coda. Ciascuna coda deve essere gestita secondo
+una politica <B>FIFO</B>.</FONT></FONT></FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="it-IT"><FONT SIZE=3><FONT FACE="Arial, Helvetica, sans-serif"><FONT COLOR="#000000">Il
+buffer della stampante ha capienza massima limitata, pari a N_MAX
+documenti. Solo dopo che N_MAX documenti sono stati accettati per la
+stampa, la stampante procede a stamparli. Per poter essere accettati
+per la stampa, i documenti rimanenti devono attendere che termini la
+stampa di <B>tutti gli N_MAX documenti </B>precedenti. Per
+semplicit&agrave;, si supponga che ogni stampa di N_MAX documenti
+duri sempre un intervallo di tempo T=100, indipendentemente dal tipo
+di documenti stampati. Al termine della stampa di ogni documento, il
+sistema di stampa deve stampare a video un <B>report </B>contenente
+l'identificativo del documento e il valore dell'istante di stampa
+previsto che gli era stato attribuito all'ingresso nel sistema.</FONT></FONT></FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=3>I
+file allegati <a href="./es2/Launcher.txt">Launcher.txt</a> e <a href="./es2/Documento.txt">Documento.txt</a> contengono le
+implementazioni, rispettiùvamente, del programma principale e della
+classe Documento. Inoltre, il file <a href="./es2/Stampante.txt">Stampante.txt</a> contiene uno
+scheletro della corrispondente classe. I candidati implementino i
+metodi mancanti acquire_img(), acquire_txt() e report () che servono
+a regolamentare l'accesso alla risorsa Stampante secondo le
+specifiche di sincronizzazione sopra illustrate.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=3>Nota:
+</FONT></FONT>
+</P>
+<OL>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=3>l'ordine
+	della stampa dei report non deve necessariamente rispecchiare
+	l'ordinamento di accettazione alla stampa.</FONT></FONT></P>
+</OL>
+</BODY>
+</HTML>

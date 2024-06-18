@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<style type="text/css">
+<!--
+.Stile2 {font-family: Arial, Helvetica, sans-serif}
+.Stile3 {font-family: "Courier New", Courier, mono}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<h3 align="center" class="Stile2">Sistemi Operativi L-A </h3>
+<h2 align="center" class="Stile2">Compito A del 12 Settenbre 2006</h2>
+<p align="center" class="Stile2">CdS in Ingegneria Informatica - Prof. Paolo Bellavista 
+</p>
+<p align="center" class="Stile2">&nbsp;</p>
+<p align="center" class="Stile2"><strong>Parte di Programmazione di Sistema </strong>(16 punti)</p>
+<p align="justify" class="Stile2">Si scriva un programma C che, utilizzando le system call del sistema operativo UNIX, abbia un'interfaccia del tipo</p>
+<p align="center" class="Stile2"><strong> compito120906A fileOut</strong></p>
+<p align="justify" class="Stile2">dove <strong>fileOut </strong>&egrave; un nome 
+  assoluto di file che deve essere creato dall'esecuzione del programma concorrente.</p>
+<p align="justify" class="Stile2">Dopo aver effettuato gli opportuni controlli 
+  sull'unico argomento, il processo iniziale <strong>P0</strong> (arbitro) deve 
+  generare un processo figlio <strong>P1</strong> (calciatore) e un processo nipote 
+  <strong>P2</strong> (portiere). Dopo il fischio dell'arbitro (segnalazione), 
+  il processo calciatore deve decidere a caso se tirare a sinistra o a destra, 
+  scrivere &quot;Tiro a sin/des&quot; sul file <b>fileOut</b> e comunicare tale 
+  decisione all'arbitro; contemporaneamente, il processo portiere deve decidere 
+  a caso se parare a sinistra o a destra, scrivere &quot;Mi tuffo a sin/des&quot; 
+  su <b>fileOut</b> e comunicare tale decisione all'arbitro. Ricevuta tale coppia 
+  di comunicazioni, <b>P0</b> deve scrivere su <b>fileOut</b> &quot;Rigore num. 
+  i parato/segnato&quot;; solo dopo tale scrittura si pu&ograve; passare a tirare 
+  un altro calcio di rigore, sempre usando il fischio dell'arbitro per coordinare 
+  la partenza degli altri processi.</p>
+<p align="justify" class="Stile2"> Il programma concorrente deve terminare o dopo 
+  dieci rigori o alla pressione di &lt;CTRL-C&gt; da parte dell'utente. Nel caso 
+  di terminazione forzata dall'utente, l'arbitro non deve far tirare pi&ugrave; 
+  nuovi rigori, ma occuparsi di elaborare tutte le comunicazioni gi&agrave; ricevute 
+  e scrivere su <b>fileOut</b> &quot;Partita interrotta dopo x rigori&quot;. Dunque, 
+  alla fine dell'esecuzione del programma concorrente, <b>fileOut</b> conterr&agrave; 
+  o 30 righe di testo (di cui la terza, sesta, nona, ... sono sempre uguali a 
+  &quot;Rigore num. i parato/segnato&quot;) oppure alcune terne di righe scritte 
+  dai tre processi e terminate dalla stringa &quot;Partita interrotta dopo x rigori&quot;. 
+  <br/>
+  Come sempre, si facciano le scelte di sincronizzazione dei processi ritenute 
+  pi&ugrave; opportune, cercando di sequenzializzare il meno possibile le varie 
+  operazioni richieste. </p>
+<p align="justify" class="Stile2">&nbsp;</p>
+<p align="justify" class="Stile2">P.S.: Si ricorda l'esistenza della funzione 
+  di libreria (in stdlib.h)<br>
+  <font face="Courier New, Courier, mono">long rand(void); </font><br>
+  per la scelta casuale di un numero intero lungo positivo. Per scegliere fra 
+  sinistra e destra si potrebbe semplicemente estrarre un numero a caso e valutare 
+  se risulta pari (destra) o dispari (sinistra). </p>
+<p></p>
+
+
+<p align="center" class="Stile2">&nbsp;</p>
+
+
+
+<p align="justify" class="Stile2">&nbsp;</p>
+
+<p align="center" class="Stile2"><strong>Parte Thread </strong>(8 punti)</p>
+
+<p align="justify" class="Stile2">Si scriva un programma che utilizzi i Java Thread
+per la gestione di code di persone in attesa di fare un giro panoramico su un trenino.</p>
+<p align="justify" class="Stile2">Prima di avere la possibilit&agrave di salire
+in carrozza le persone devono attendere in coda il proprio turno. Si considerino
+due tipi di persone: adulti e bambini. 
+I <strong>bambini</strong> hanno <strong>priorit&agrave maggiore</strong> rispetto
+agli <strong>adulti</strong>: un adulto viene fatto salire solamente nel caso in cui non vi siano bambini in coda. Ciascuna coda deve essere gestita secondo una politica <strong>FIFO</strong>.<br>Il trenino ha capienza massima limitata pari a <strong>PMAX</strong>.
+Una volta che <strong>PMAX</strong> persone sono salite (e solo in questo caso) il trenino parte. Per poter salire, le persone in coda devono attendere che il trenino torni indietro e che <strong>tutti i PMAX</strong> occupanti lascino la vettura.</p>
+<p align="justify" class="Stile2">I file allegati <a href="./es1/Launcher.java">Launcher.java</a> 
+  e <a href="./es1/Persona.java">Persona.java</a> contengono le implementazioni, rispettivamente, 
+  del programma principale e della classe Persona. Inoltre, il file <a href="./es1/Trenino.java">Trenino.java</a> 
+  contiene lo scheletro della classe Trenino. I candidati implementino i metodi 
+  mancanti <font face="Courier New, Courier, mono">acquire_adult()</font> e <font face="Courier New, Courier, mono">acquire_child()</font> 
+  della classe Trenino che servono a regolare l'accesso alla risorsa trenino secondo 
+  le specifiche di sincronizzazione sopra illustrate.</p>
+</body>
+</html>

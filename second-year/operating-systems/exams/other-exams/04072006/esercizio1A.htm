@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<style type="text/css">
+<!--
+.Stile2 {font-family: Arial, Helvetica, sans-serif}
+.Stile3 {font-family: "Courier New", Courier, mono}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<h3 align="center" class="Stile2">Sistemi Operativi L-A </h3>
+<h2 align="center" class="Stile2">Primo Turno (studenti I-Z) - Compito A del 4 
+  Luglio 2006</h2>
+<p align="center" class="Stile2">CdS in Ingegneria Informatica - Prof. Paolo Bellavista 
+</p>
+<p align="center" class="Stile2">&nbsp;</p>
+<p align="center" class="Stile2"><strong>Parte di Programmazione di Sistema </strong>(16 punti)</p>
+<p align="justify" class="Stile2">Si scriva un programma C che, utilizzando le system call del sistema operativo UNIX, abbia un'interfaccia del tipo</p>
+<p align="center" class="Stile2"><strong> compito040706PrimoA fileIn fileOut car threshold </strong></p>
+<p align="justify" class="Stile2">dove <strong>fileIn</strong> e <strong> fileOut  </strong> sono nomi assoluti di file (<strong>fileIn</strong> supposto gi&agrave; presente nel file system, <strong>fileOut</strong> da creare), <strong>car</strong> un singolo carattere e <strong>threshold</strong> un numero naturale.</p>
+<p align="justify" class="Stile2">Dopo aver effettuato gli opportuni controlli sugli argomenti, il processo iniziale <strong>P0</strong> deve generare un processo figlio <strong>P1</strong>, che a sua volta genera un processo nipote <strong>P2</strong>. Il processo <strong>P0</strong> deve leggere il primo terzo del file <strong>fileIn</strong> (se <strong>fileIn</strong> &egrave; lungo <em>n</em> byte, <strong>P0</strong> dovr&agrave; leggerne i primi <em>n/3</em>) contando le occorrenze del carattere <strong>car</strong>. Se le occorrenze contate sono maggiori di <strong>threshold</strong> allora i processi <strong>P1 </strong>e <strong>P2</strong> si dovranno occupare di contare le lettere maiuscole rispettivamente nel secondo e ultimo terzo di <strong>fileIn</strong>. Altrimenti, <strong>P1 </strong> e <strong>P2</strong> dovranno occuparsi del conteggio delle lettere minuscole, sempre nelle stesse porzioni di file.<br/>
+  Al termine del conteggio, <strong>P1</strong> dovr&agrave; capire se le maiuscole/minuscole contate sono di pi&ugrave;, di meno, o uguali a quelle contate da <strong>P2</strong>, e conseguentemente scrivere su <strong>fileOut</strong> &quot;Sono P1 e ho trovato pi&ugrave;/meno/uguali caratteri maiuscoli/minuscoli nella mia porzione di file&quot;; analoga cosa deve essere fatta da <strong>P2</strong>.<br/>
+  <u>Deve essere rispettato il seguente vincolo di sincronizzazione</u>: il processo che ha contato pi&ugrave; maiuscole/minuscole fra <strong>P1 </strong> e <strong>P2</strong> deve sempre scrivere <u>per primo</u> su <strong>fileOut</strong>.<br/>
+  Come sempre, si facciano le scelte di sincronizzazione dei processi ritenute pi&ugrave; opportune, cercando di sequenzializzare il meno possibile le varie operazioni richieste. </p>
+<p align="justify" class="Stile2"><font size="2">P.S.: Si ricorda l'esistenza 
+  delle funzioni di libreria<br>
+  <span class="Stile3">int sprintf(char *str, char* format, ...); <font face="Arial, Helvetica, sans-serif">ad 
+  </font></span></font><font size="2" face="Arial, Helvetica, sans-serif"><span class="Stile3">esempio 
+  </span></font><font size="2"><span class="Stile3">sprintf(s1,&quot;%d&quot;,x);<br/>
+  long strtol(char *str, char **ptr, int base); <font face="Arial, Helvetica, sans-serif">ad 
+  esempio </font>x=strtol(s1,null,10);<br/>
+  <span class="Stile2">per la conversione da int a string e da stringa a int, 
+  rispettivamente. </span></span></font></p>
+<p align="justify" class="Stile2">&nbsp;</p>
+<p align="center" class="Stile2"><strong>Parte di Programmazione File Comandi 
+  UNIX - Secondo Turno - </strong>(8 punti)</p>
+<p align="justify" class="Stile2">Si scriva un file comandi in bash Shell di Linuxche 
+  abbia un'interfaccia del tipo</p>
+<p align="center" class="Stile2"><strong>shell040706SecondoA dir [filter]</strong></p>
+<p align="justify" class="Stile2"> dove <strong>dir</strong> &egrave; un nome 
+  assoluto di direttorio e <strong>filter</strong> una stringa (opzionale). Si 
+  svolgano gli opportuni controlli sui parametri di invocazione del file comandi.<br/>
+  Il compito del file comandi &egrave; quello di stampare a video il valore numerico 
+  del <em><b>massimo numero di parole</b> </em>nei file presenti all'interno del 
+  sottoalbero individuato da <strong>dir</strong>.<br/>
+  Devono essere considerati <em><b>solo</b></em> i file che contengono <strong>filter</strong> 
+  all'interno del proprio nome; se il parametro <strong>filter</strong> non &egrave; 
+  presente, tutti i file devono essere considerati.<br/>
+Inoltre, si effettui il conteggio solo sui file leggibili dall'utente che ha invocato il comando.  </p>
+</body>
+</html>

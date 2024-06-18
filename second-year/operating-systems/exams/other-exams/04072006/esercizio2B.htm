@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<style type="text/css">
+<!--
+.Stile2 {font-family: Arial, Helvetica, sans-serif}
+.Stile3 {font-family: "Courier New", Courier, mono}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<h3 align="center" class="Stile2">Sistemi Operativi L-A </h3>
+<h2 align="center" class="Stile2">Secondo Turno (studenti A-H) - Compito B del 
+  4 Luglio 2006</h2>
+<p align="center" class="Stile2">CdS in Ingegneria Informatica - Prof. Paolo Bellavista 
+</p>
+<p align="center" class="Stile2">&nbsp;</p>
+<p align="center" class="Stile2"><strong>Parte di Programmazione di Sistema </strong>(16 punti)</p>
+<p align="justify" class="Stile2">Si scriva un programma C che, utilizzando le system call del sistema operativo UNIX, abbia un'interfaccia del tipo</p>
+<p align="center" class="Stile2"><strong> compito040706SecondoB file1 file2</strong></p>
+<p align="justify" class="Stile2">dove <strong>file1</strong> e <strong> file2</strong> sono nomi assoluti di file, entrambi <strong></strong> supposti gi&agrave; presenti nel file system.</p>
+<p align="justify" class="Stile2">Dopo aver effettuato gli opportuni controlli 
+  sugli argomenti, il processo iniziale <strong>P0</strong> deve generare un processo 
+  figlio <strong>P1</strong> e poi un secondo processo figlio <strong>P2</strong>, 
+  fratello di <strong>P1</strong>. Il processo <strong>P0</strong> deve leggere 
+  le sole righe di posizione multipla di 3 nel file <strong>file1</strong> (si 
+  considerino quindi le righe di posizione 0, 3, 6, 9, ...) e comunicarle a <strong>P1</strong>. 
+  Il processo <strong>P1 </strong> deve anch'esso leggere le sole righe di posizione 
+  multipla di 3 di <strong>file2</strong> e confrontarle carattere per carattere 
+  con i dati comunicati da <strong>P0</strong>: solo se i due caratteri corrispondenti 
+  sono diversi (ad esempio, il primo carattere comunicato da <strong>P0</strong> 
+  e il primo carattere letto in <strong>file2</strong>) allora <strong>P1</strong> 
+  deve comunicarli a <strong>P2</strong> (il carattere speciale di nuova linea 
+  non deve essere comunicato in nessun caso). <strong>P2</strong> deve semplicemente 
+  scrivere i dati ricevuti da <strong>P1</strong> sul file <strong>file2</strong>.<br/>
+  In ogni istante si consideri la possibilit&agrave; che un utente prema &lt;CTRL-C&gt;. Se questo accade, il programma concorrente deve immediatamente cambiare il proprio comportamento. In particolare, <strong>P1</strong> deve <u>immediatamente</u> scrivere su <strong>file2</strong> &quot;Premuto CTRL-C&quot; e non inviare pi&ugrave; caratteri da confrontare a <strong>P2</strong>, dopodich&egrave; <strong>P2</strong> non potr&agrave; pi&ugrave; scrivere le ultime eventuali coppie residue gi&agrave; ricevute ma solo la stringa &quot;Bloccato da P1&quot;. Alla fine dell'esecuzione del programma concorrente, quindi, <strong>file2</strong> conterr&agrave; o tutte le coppie di caratteri diversi in posizioni omologhe oppure alcune di queste coppie e la stringa &quot;Premuto CTRL-C Bloccato da P1&quot;.<br/>
+  Come sempre, si facciano le scelte di sincronizzazione dei processi ritenute pi&ugrave; opportune, cercando di sequenzializzare il meno possibile le varie operazioni richieste. </p>
+<p align="justify" class="Stile2">&nbsp;</p>
+<p align="center" class="Stile2"><strong>Parte di programmazione Java Thread </strong>(8 
+  punti)</p>
+<p align="justify" class="Stile2">Si vuole scrivere un programma che utilizzi 
+  i Java Thread per la simulazione dell'esito dei rigori tirati al termine di 
+  una partita di calcio (secondo regole differenti rispetto a quelle usuali del 
+  gioco del calcio).<br/>
+  Come si nota dal file allegato <span class="Stile3">Partita.java</span>, l'addetto 
+  alla gestione del simulatore (piuttosto distratto) ha inserito i record relativi 
+  ad arbitro e calci di rigore in maniera disordinata. Si utilizzino dunque i 
+  costrutti di sincronizzazione di Java Thread per scrivere una classe <span class="Stile3">Rigori.java</span> 
+  che fornisca i metodi:</p>
+<p align="justify" class="Stile3">void <strong>rigore</strong>(int squadra, int ordine, int segnato)</p>
+<p align="justify" class="Stile3">int <strong>check</strong>()</p>
+<p align="justify" class="Stile2">In particolare, la classe <span class="Stile3">Rigori.java</span> 
+  deve essere tale che: </p>
+<ul>
+  <li class="Stile2">un giocatore sia autorizzato a tirare il rigore se e solo se hanno tirato tutti i rigoristi precedenti (della sua squadra e di quella avversaria) e la partita non &egrave; ancora finita;</li>
+  <li class="Stile2">la squadra autorizzata a tirare per prima i rigori sia la 
+    squadra 1;</li>
+  <li class="Stile2">dopo l'esecuzione di ogni coppia di rigori (uno tirato per squadra), l'arbitro controlli il risultato e dichiari finita la partita se
+    <ul>
+      <li>nell'ultima coppia di rigori una squadra ha segnato il rigore mentre 
+        l'altra lo ha fallito;</li>
+      <li>sono stati tirati 5 rigori per squadra.</li>
+    </ul>
+  </li>
+</ul>
+<p class="Stile2">Si utilizzino le classi allegate <span class="Stile3">Partita.java</span>, 
+  <span class="Stile3">Giocatore.java</span>, <span class="Stile3">Arbitro.java</span></p>
+</body>
+</html>

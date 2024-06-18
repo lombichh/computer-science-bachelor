@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<style type="text/css">
+<!--
+.Stile2 {font-family: Arial, Helvetica, sans-serif}
+.Stile4 {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<h3 align="center" class="Stile2">Sistemi Operativi L-A </h3>
+<h2 align="center" class="Stile2">Compito del 20 Dicembre 2006</h2>
+<p align="center" class="Stile2">CdS in Ingegneria Informatica - Prof. Paolo Bellavista</p>
+<p align="center" class="Stile2">&nbsp;</p>
+<p align="center" class="Stile2"><strong>Parte di Programmazione di Sistema </strong>(16 punti)</p>
+<p align="justify" class="Stile2"><font size="3" face="Arial, Helvetica, sans-serif">Si 
+  scriva un programma C che, utilizzando le system call del sistema operativo 
+  UNIX, abbia un'interfaccia del tipo:</font></p>
+<p align="center" class="Stile4">ContaMAIUSTotali NomeFileIn  NomeFileOut carSeparatore</p>
+<p class="Stile2">dove<strong> NomeFileIn </strong>&egrave; un  nome assoluto di file gi&agrave; presente nel file system, <strong>NomeFileOut </strong>un nome assoluto per il file prodotto dall'esecuzione  del programma, e <strong>carSeparatore</strong> un singolo carattere non alfabetico. Dopo  aver effettuato gli opportuni controlli sui parametri di invocazione, oltre al  processo iniziale <strong>P0</strong>, devono essere generati due ulteriori processi <strong>P1</strong> e <strong>P2</strong>, rispettivamente figlio  e nipote di <strong>P0</strong>. <strong>P0 </strong>e <strong>P2 </strong>devono occuparsi di leggere, alternativamente un  blocco l&rsquo;uno un blocco l&rsquo;altro, il  contenuto dell&rsquo;intero file di testo <strong>NomeFileIn</strong>. In questo esercizio, si definisce blocco  una sequenza di al pi&ugrave; 500 caratteri terminata dal carattere speciale <strong>carSeparatore</strong> (passato come argomento all&rsquo;invocazione del programma). </p>
+<p class="Stile2">Entrambi i processi (<strong>P0 </strong>e <strong>P2</strong>) si occupano di contare i caratteri alfabetici maiuscoli  presenti nel blocco di loro pertinenza e di comunicare il risultato del  conteggio al processo <strong>P1</strong> per ogni blocco esaminato. Inoltre, entrambi i  processi devono scrivere su <strong>NomeFileOut</strong>, ciascuno in modo non  interrompibile per ogni singolo blocco, tutti gli alfabetici maiuscoli presenti  nel blocco. </p>
+<p class="Stile2"><strong>P1</strong> deve infine stampare a video il numero totale di  alfabetici maiuscoli contati in tutti i blocchi del file di ingresso (somma di  tutti i conteggi parziali ricevuti dai processi <strong>P0</strong> e <strong>P2</strong>) <u>solo  dopo che il processo <strong>P2</strong> ha terminato tutto il suo lavoro</u>. </p>
+<p class="Stile2">In ogni istante deve essere possibile per l'utente ridurre il carico computazionale associato al programma concorrente, riducendo il numero dei processi coinvolti. In particolare, premendo &lt;CTRL-C&gt; l'utente deve poter comandare al programma di passare a soli due processi (terminando <strong>P2</strong> in maniera forzata). Comunque il processo <strong>P1</strong> dovr&agrave; stampare a video, in questo caso, il risultato dell'intero lavoro di <strong>P0</strong> fino fine file e del lavoro di <strong>P2</strong> prima della sua terminazione.</p>
+<p class="Stile2">Si facciano le scelte di  sincronizzazione dei processi ritenute pi&ugrave; opportune, cercando di  sequenzializzare il meno possibile le varie operazioni richieste.</p>
+<p class="Stile2">&nbsp;</p>
+<p class="Stile2">&nbsp;</p>
+<p align="center" class="Stile2"><STRONG>Parte di Programmazione UNIX Shell </STRONG>(8 punti)</p>
+<p align="justify" class="Stile2">Si scriva un file comandi in Shell di UNIX che   abbia un'interfaccia del tipo</p>
+<p align="center" class="Stile4">branch.sh dir</p>
+<p align="justify" class="Stile2">dove <STRONG>dir</STRONG> &egrave; un direttorio assoluto,   che si suppone gi&agrave; esistente nel file system.</p>
+<p align="justify" class="Stile2">Il compito del file comandi &egrave; quello di   determinare il massimo grado di ramificazione del sottoalbero individuato da <STRONG>dir</STRONG> e stampare a video il percorso assoluto di tutti i   sotto-direttori che presentano tale grado di ramificazione.</p>
+<p align="justify" class="Stile2">Per <em><u>grado di ramificazione di un direttorio</u></em> si intende il numero dei suoi sotto-direttori.</p>
+<p align="left" class="Stile2">Ad esempio, considerando il   sottoalbero in figura:</p>
+<p align="center" class="Stile2"><BR>
+  <img src="esempio2.jpg" alt="shell" width="267" height="276">  <BR>
+</p>
+<p align="justify" class="Stile2">L'output del file comandi   deve essere:<BR>
+  <BR>
+  2<BR>
+  .../a<BR>
+  .../a/c </p>
+<p align="justify" class="Stile2"><EM>Suggerimento</EM>: si utilizzi un file di   appoggio in cui memorizzare il massimo valore di diramazione attualmente   individuato, seguito dalla lista dei direttori che presentano tale valore.</p>
+</body>
+</html>

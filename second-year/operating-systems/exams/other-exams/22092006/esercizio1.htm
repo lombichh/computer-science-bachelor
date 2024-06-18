@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<style type="text/css">
+<!--
+.Stile2 {font-family: Arial, Helvetica, sans-serif}
+.Stile3 {font-family: "Courier New", Courier, mono}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<h3 align="center" class="Stile2">Sistemi Operativi L-A </h3>
+<h2 align="center" class="Stile2">Compito A del 22 Settembre 2006</h2>
+<p align="center" class="Stile2">CdS in Ingegneria Informatica - Prof. Paolo Bellavista 
+</p>
+<p align="center" class="Stile2">&nbsp;</p>
+<p align="center" class="Stile2"><strong>Parte di Programmazione di Sistema </strong>(16 punti)</p>
+<p align="justify" class="Stile2"><font size="3" face="Arial, Helvetica, sans-serif">Si 
+  scriva un programma C che, utilizzando le system call del sistema operativo 
+  UNIX, abbia un'interfaccia del tipo:</font></p>
+<p align="center"><font size="3" face="Arial, Helvetica, sans-serif"><b><font face="Courier New, Courier, mono">chatModerata 
+  vietate nomeFileOut</font></b></font></p>
+<p></p>
+<p><font size="3" face="Arial, Helvetica, sans-serif">dove <b>vietate </b>&egrave; 
+  un nome assoluto di file gi&agrave; esistente nel file system, mentre <b>nomeFileOut</b> 
+  deve essere aperto in append in scrittura se esistente oppure creato ex-novo 
+  se non presente nel file system. </font><font size="3" face="Arial, Helvetica, sans-serif">Dopo 
+  aver effettuato gli opportuni controlli sui parametri di invocazione, il processo 
+  iniziale <b>P0</b> deve generare un processo <b>P1</b> il quale, a sua volta, 
+  deve generare un processo <b>P2</b> (nipote di <b>P0</b>). <b>P2</b> svolger&agrave; 
+  il ruolo di moderatore della chat, <b>P0</b> il ruolo di cliente master della 
+  chat, e infine <b>P1</b> il ruolo di cliente normale. <br>
+  </font></p>
+<p><font size="3" face="Arial, Helvetica, sans-serif"><b>P0</b> sar&agrave; il 
+  primo a cominciare il dialogo con <b>P1</b>: per far questo invier&agrave; un 
+  messaggio &quot;Apertura comunicazione&quot; a <b>P2</b> che lo trasferir&agrave; 
+  a <b>P1</b>. <b>P1</b> risponder&agrave; con un messaggio di risposta &quot;ACK&quot;, 
+  sempre comunicato a <b>P0</b> attraverso <b>P2</b>. Solo dopo aver ricevuto 
+  il messaggio, <b>P0</b> potr&agrave; inviarne uno ulteriore, <u>di lunghezza 
+  qualsiasi</u> (comunque minore di 255 caratteri), a <b>P1</b>; in seguito <b>P1</b> 
+  potr&agrave; inviare un simile messaggio di risposta a <b>P0</b>, e cos&igrave; 
+  via, sempre con una interazione domanda-risposta.</font></p>
+<p><font size="3" face="Arial, Helvetica, sans-serif">La chat &egrave; moderata 
+  per evitare che i processi si insultino utilizzando improperi incivili. L'elenco 
+  dei messaggi vietati &egrave; contenuto nel file di testo <b>vietate</b>; ogni 
+  riga di tale file contiene un singolo messaggio vietato. Durante il funzionamento 
+  della chat, il cliente master <b>P0</b> si pu&ograve; considerare &quot;civile&quot;: 
+  esso chieder&agrave; all'utente di digitare un messaggio e si auto-moderer&agrave; 
+  comunicando il messaggio a <b>P2</b> solo se tale messaggio non &egrave; contenuto 
+  in <b>vietate</b>. <b>P1</b> invece comunica ogni messaggio digitato dall'utente; 
+  per questo, in tal caso il moderatore <b>P2</b> si deve incaricare di trasferire 
+  i soli messaggi non vietati di <b>P1</b>. Inoltre, il moderatore deve salvare 
+  tutti i messaggi a lui comunicati, sia accettabili che vietati, sul file di 
+  archivio <b>nomeFileOut</b>.</font></p>
+<p><font size="3" face="Arial, Helvetica, sans-serif">Se durante l'esecuzione 
+  della chat, <b>P2</b> rileva che <b>P1</b> ha inviato messaggi vietati per 3 
+  volte, allora <b>P2</b> deve immediatamente ripulire <b>nomeFileOut</b> dai 
+  messaggi vietati e forzare la terminazione del programma concorrente. Prima 
+  di terminare il programma concorrente, in ogni caso, <b>P2</b> deve leggere 
+  tutti i messaggi eventualmente gi&agrave; inviatigli da <b>P0</b> e <b>P1</b>; 
+  tali messaggi devono comunque essere salvati sull'archivio <b>nomeFileOut</b>. 
+  </font></p>
+<p></p>
+<p>&nbsp;</p>
+<p><font size="3" face="Arial, Helvetica, sans-serif">Nota:</font></p>
+<p><font size="3" face="Arial, Helvetica, sans-serif">Si rammenta l'esistenza 
+  della funzione standard C/UNIX di utilit&agrave;:</font></p>
+<p><font size="3" face="Arial, Helvetica, sans-serif"> <font face="Courier New, Courier, mono">int 
+  strcmp(char* str1, char* str2)</font></font></p>
+<p><font size="3" face="Arial, Helvetica, sans-serif">inclusa nella libreria <font face="Courier New, Courier, mono">&lt;string.h&gt;</font><br>
+  </font><font size="3"> </font> </p>
+
+<p align="center" class="Stile2">&nbsp;</p>
+
+<p align="justify" class="Stile2">&nbsp;</p>
+
+<p align="center" class="Stile2"><strong>Parte Thread </strong>(8 punti)</p>
+
+<p align="justify" class="Stile2">Si scriva un programma che utilizzi i Java Thread 
+  per la gestione di code di persone in attesa di vedere un cortometraggio in 
+  una sala proiezioni.</p>
+<p align="justify" class="Stile2">Prima di avere la possibilit&agrave di entrare 
+  nella sala, le persone devono attendere in coda il proprio turno. Si considerino 
+  due tipi di persone: adulti e bambini. I <strong>bambini</strong> hanno <strong>priorit&agrave 
+  maggiore</strong> rispetto agli <strong>adulti</strong>. Ciascuna coda deve 
+  essere gestita secondo una politica <strong>FIFO</strong>.<br>
+   La sala ha capienza massima limitata pari a <strong>PMAX</strong> unit&agrave. Gli <strong>adulti</strong> occupano <strong>due unit&agrave</strong> mentre i <strong>bambini</strong> ne occupano <strong>una</strong>. <br>
+<em>Per evitare che le code diventino troppo lunghe, quando quella degli adulti supera la lunghezza <strong>MAXQUEUE</strong>, gli occupanti <strong>in eccesso</strong> hanno diritto di precedenza sui bambini in attesa, a meno che anche la coda dei bambini non superi anch'essa la lunghezza <strong>MAXQUEUE</strong>.</em><br>
+  Solo dopo che <strong>PMAX</strong> persone sono entrate nella sala, la proiezione 
+  ha inizio; per poter entrare nella sala, le persone in coda devono attendere 
+  che la proiezione abbia termine e che <strong>tutti i vecchi PMAX</strong> occupanti 
+  lascino la sala.</p>
+<p align="justify" class="Stile2">I file allegati <a href="./thread/Launcher.java">Launcher.java</a> 
+  e <a href="./thread/Persona.java">Persona.java</a> contengono le implementazioni, rispettivamente, 
+  del programma principale e della classe Persona. Inoltre, il file <a href="./thread/Proiezione.java">Proiezione.java</a> 
+  contiene lo scheletro della classe Proiezione. I candidati implementino i metodi 
+  mancanti <font face="Courier New, Courier, mono">acquire_adult()</font> e <font face="Courier New, Courier, mono">acquire_child()</font> della classe Proiezione che servono a regolare l'accesso alla risorsa sala di proiezione secondo 
+  le specifiche di sincronizzazione sopra illustrate.</p>
+<p align="justify" class="Stile2">Per semplicit&agrave non ci si preoccupi di 
+  gestire la situazione in cui, avendo la sala raggiunto occupazione pari a PMAX-1, 
+  il programma concorrente rischia di rimane bloccato (gli adulti occupano due unit&agrave; di spazio). </p>
+</body>
+</html>

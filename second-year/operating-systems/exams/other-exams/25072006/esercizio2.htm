@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<style type="text/css">
+<!--
+.Stile2 {font-family: Arial, Helvetica, sans-serif}
+.Stile3 {font-family: "Courier New", Courier, mono}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<h3 align="center" class="Stile2">Sistemi Operativi L-A </h3>
+<h2 align="center" class="Stile2">Compito B del 25 Luglio 2006</h2>
+<p align="center" class="Stile2">CdS in Ingegneria Informatica - Prof. Paolo Bellavista 
+</p>
+<p align="center" class="Stile2">&nbsp;</p>
+<p align="center" class="Stile2"><strong>Parte di Programmazione di Sistema </strong>(16 punti)</p>
+<p align="justify" class="Stile2"><font face="Arial, Helvetica, sans-serif">Si 
+  scriva un programma C che, utilizzando le system call del sistema operativo 
+  UNIX, abbia un'interfaccia del tipo</font></p>
+<p align="center" class="Stile2"><font face="Arial, Helvetica, sans-serif"><strong> 
+  compito250706C fileIn fileOut car1 car2</strong></font></p>
+<p align="justify" class="Stile2"><font face="Arial, Helvetica, sans-serif">dove 
+  <strong>fileIn</strong> e <strong> fileOut </strong> sono nomi assoluti di file 
+  (<strong>fileIn</strong> supposto gi&agrave; presente nel file system, <strong>fileOut</strong> 
+  da creare) mentre <b>car1</b> e <b>car2</b> sono ciascuno un singolo carattere.</font></p>
+<p align="justify" class="Stile2"><font face="Arial, Helvetica, sans-serif">Dopo 
+  aver effettuato gli opportuni controlli sugli argomenti, il processo iniziale 
+  <strong>P0</strong> deve generare due processi <strong>P1</strong> e <b>P2</b> 
+  nella relazione di parentela ritenuta pi&ugrave; opportuna. Sia <i>n</i> la 
+  lunghezza in byte del file <b>fileIn</b>. Il processo <strong>P0</strong> deve 
+  occuparsi di leggere i primi <i>n/3</i> caratteri di <b>fileIn</b> e di contare 
+  quante occorrenze di <b>car1</b> e <b>car2</b> sono presenti nella porzione 
+  di file di sua competenza. Analoga operazione deve essere svolta <u>in paralllelo</u> 
+  da <b>P1</b> sul secondo terzo del file e da <b>P2</b> sull'ultimo terzo. <br>
+  Non appena hanno terminato l'elaborazione sul proprio terzo del file, i tre 
+  processi devono scambiarsi il numero di caratteri <b>car1</b> e <b>car2</b> 
+  trovati al fine di determinare la somma di tutte le occorrenze di ciascuno dei 
+  due caratteri nel file e di stabilire chi ne ha trovati di pi&ugrave;. In particolare, 
+  il processo che ha trovato il massimo numero di occorrenze di <b>car1</b> nella 
+  propria porzione di file dovr&agrave; scrivere su <b>fileOut</b> &quot;Ne ho 
+  contati di pi&ugrave; io. La somma totale dei caratteri car1 &egrave; ...&quot;. 
+  Analogamente, il processo che ha trovato il massimo numero di occorrenze di 
+  <b>car2</b> nella propria porzione di file dovr&agrave; scrivere su <b>fileOut</b> 
+  &quot;Ne ho contati di pi&ugrave; io. La somma totale dei caratteri car2 &egrave; 
+  ...&quot;. <br/>
+  <u>Deve essere rispettato il seguente vincolo di sincronizzazione</u>: su <b>fileOut</b> 
+  deve essere sempre scritta per PRIMA la frase riguardante <b>car1</b>, seguita 
+  poi dalla frase su <b>car2</b>. <br/>
+  Come sempre, si facciano le scelte di sincronizzazione dei processi ritenute 
+  pi&ugrave; opportune, cercando di sequenzializzare il meno possibile le varie 
+  operazioni richieste. </font></p>
+<p align="justify" class="Stile2"><font size="2">P.S.: Si ricorda l'esistenza 
+  delle funzioni di libreria<br>
+  <span class="Stile3">int sprintf(char *str, char* format, ...); <font face="Arial, Helvetica, sans-serif">ad 
+  </font></span></font><font size="2" face="Arial, Helvetica, sans-serif"><span class="Stile3">esempio 
+  </span></font><font size="2"><span class="Stile3">sprintf(s1,&quot;%d&quot;,x);<br/>
+  long strtol(char *str, char **ptr, int base); <font face="Arial, Helvetica, sans-serif">ad 
+  esempio </font>x=strtol(s1,null,10);<br/>
+  <span class="Stile2">per la conversione da int a string e da stringa a int, 
+  rispettivamente. </span></span></font></p>
+<h3 align="center" class="Stile2">&nbsp;</h3>
+<p align="center" class="Stile2"><strong>Parte di Programmazione UNIX Shell </strong>(8 
+  punti)</p>
+<p align="justify" class="Stile2">Si scriva un file comandi in Shell di UNIX che abbia un'interfaccia del tipo</p>
+<p align="center" class="Stile2"><strong>confile.sh file dir1 ... dirN </strong></p>
+<p align="justify" class="Stile2"> Dove <strong>file</strong> &egrave; una stringa 
+  mentre <strong>dir1 </strong>...<strong> dirN </strong> sono un numero N qualsiasi, 
+  non noto a priori, di nomi di direttori assoluti che devono esistere nel file 
+  system.</p>
+<p align="justify" class="Stile2">Il compito del file comandi &egrave; quello di visitare tutti i sottoalberi individuati da <strong>dir1</strong> ... <strong>dirN</strong> alla ricerca del file di nome <strong>file</strong>. Ogni volta che <strong>file</strong> viene incontrato, il comando deve appendere in coda ad un file di report, da inserire nella home dell'utente che ha invocato il comando, una riga del tipo: </p>
+<p align="justify" class="Stile3">N PERCORSO_COMPLETO</p>
+<p align="justify" class="Stile2">dove <span class="Stile3">N</span> &egrave; la lunghezza (numero di caratteri) del <strong>file</strong> appena incontrato nel direttorio corrente e <span class="Stile3">PERCORSO_COMPLETO</span> il suo nome assoluto.</p>
+<p align="justify" class="Stile2">Al termine dell'esecuzione, il file comandi 
+  deve stampare una stringa del tipo <em>&quot;<strong>file</strong> non trovato 
+  in nessun direttorio!&quot;</em> se <strong>file</strong> non &egrave; stato 
+  trovato in nessuno dei sottoalberi passati come argomento, oppure la riga del 
+  file di report che comincia con la lunghezza MASSIMA. </p>
+<p>&nbsp;</p>
+
+
+</body>
+</html>
