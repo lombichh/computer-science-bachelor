@@ -1,0 +1,14 @@
+INDEX VERSION 1.134+/Users/matteolombardi/Desktop/tw-template/.metadata/.plugins/org.eclipse.jdt.core
+3591811701.index
+3619288809.index
+1643764296.index
+4098505497.index
+1543416607.index
+3659121421.index
+3658489566.index
+3829099757.index
+2866787808.index
+3878690544.index
+1054295358.index
+1865797976.index
+3135763616.index

@@ -1,0 +1,72 @@
+class App extends React.Component {
+  constructor(){
+        super();
+        this.state = {
+			expr: "",
+        	result: ""
+        }
+        this.onClick = this.onClick.bind(this); 
+  }
+
+  onClick(e) {
+        let button = e.target.name
+        if(button === "="){
+
+            this.calculate()
+        }
+
+      else if(button === "C"){
+          this.reset()
+      }
+      else if(button === "CE"){
+          this.backspace()
+      }
+
+      else {
+          this.setState({
+        expr: this.state.expr + button
+          })
+      }
+  };
+
+
+  calculate() {
+        try {
+              this.setState({
+              result: (eval(this.state.expr) || "" ) + ""
+            })
+        } catch (e) {
+            this.setState({
+          result: "error"
+            })
+
+        }
+  };
+
+  reset(){
+      this.setState({
+		  expr: "",
+          result: ""
+      })
+        };
+
+
+  backspace(){
+      this.setState({
+          expr: this.state.expr.slice(0, -1)
+      })
+  };
+
+  render() {
+      return (
+
+        <div className="calculator-body">
+            <h1>Calcolatrice</h1>
+			<Display value={this.state.expr}/>
+            <Display value={this.state.result}/>
+            <KeyBoard onClick={this.onClick}/>
+        </div>
+
+      );
+  }
+}

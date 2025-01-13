@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Exams</title>
+	</head>
+	
+	<body>
+		<p id="time"></p>
+		
+		<form>
+		</form>
+		
+		<script language="Javascript" src="scripts/exams.js"></script>
+	</body>
+</html>

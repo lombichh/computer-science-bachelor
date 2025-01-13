@@ -1,0 +1,5 @@
+INDEX VERSION 1.134+/Users/matteolombardi/Uni/tecweb/lab2/.metadata/.plugins/org.eclipse.jdt.core
+2230658749.index
+1543729205.index
+2191297738.index
+1865797976.index

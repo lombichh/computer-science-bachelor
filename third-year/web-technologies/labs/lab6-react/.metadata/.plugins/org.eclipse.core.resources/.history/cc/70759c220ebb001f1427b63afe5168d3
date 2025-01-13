@@ -1,0 +1,45 @@
+function getServerCalculationResult(xhr, state) {
+	if (xhr.readyState === 4) {
+		if (xhr.status === 200) {
+			state = {
+				result: xhr.responseText
+			}
+		} else {
+			state = {
+				result: "Error"
+			}
+		}
+
+	}
+}
+
+
+
+function requestServerCalculationIframe(uri, holder) {
+	holder.innerHTML = '<iframe src="' + uri + '" width="50%" height="50px">Il tuo browser non supporta gli iframe</iframe>';
+}
+
+
+
+function requestServerCalculationAJAX(uri, xhr, state) {
+	xhr.onreadystatechange = function() {
+		getServerCalculationResult(xhr, state);
+	}
+
+	try {
+		xhr.open("get", uri, true);
+	}
+	catch(e) { alert(e); }
+
+	xhr.send(null);
+}
+
+
+
+function requestServerCalculation(uri, callback) {
+	var xhr = myGetXmlHttpRequest();
+	
+	if (xhr) requestServerCalculationAJAX(uri, xhr, callback);
+	else requestServerCalculationIframe(uri, callback);
+
+}

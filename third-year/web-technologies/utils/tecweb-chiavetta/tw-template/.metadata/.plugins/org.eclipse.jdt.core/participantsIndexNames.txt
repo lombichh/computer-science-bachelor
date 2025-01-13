@@ -1,0 +1,9 @@
+INDEX VERSION 1.134
+/Users/matteolombardi/Desktop/tw-template/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3479890044.index
+/tomcat-template/src
+/Users/matteolombardi/Desktop/tw-template/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1567282354.index
+/tomcat-template/src
+/Users/matteolombardi/Desktop/tw-template/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/4255833238.index
+/tomcat-template/src
+/Users/matteolombardi/Desktop/tw-template/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/91870905.index
+/tomcat-template/src

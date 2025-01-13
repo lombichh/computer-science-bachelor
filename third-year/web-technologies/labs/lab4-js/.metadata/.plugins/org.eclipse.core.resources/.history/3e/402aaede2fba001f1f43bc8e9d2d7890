@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Exams</title>
+	</head>
+	
+	<body>
+		<p id="time"></p>
+		
+		<form>
+			<input type="text" name="textinput"><br/>
+			<input type="password" name="passwordinput"><br/>
+			<input type="file" name="fileinput"><br/>
+			<input type="checkbox" name="checkboxtinput"><br/>
+			<input type="radio" name="radiogroup"><br/>
+			<input type="radio" name="radiogroup" checked="checked"><br/>
+			<select name="select">
+				<option value="first" selected="selected">First Option</option>
+				<option value="second">Second Option</option>
+			</select><br/>
+			
+			<button type="button">Button</button><br/>
+			<button type="submit">Submit</button><br/>
+			<button type="reset">Reset</button>
+		</form>
+		
+		<p id="formEventsOutput"></p>
+		
+		<script language="Javascript" src="scripts/events.js"></script>
+	</body>
+</html>

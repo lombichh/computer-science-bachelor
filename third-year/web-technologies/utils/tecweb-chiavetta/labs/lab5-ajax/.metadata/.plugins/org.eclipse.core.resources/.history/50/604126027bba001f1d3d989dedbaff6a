@@ -1,0 +1,48 @@
+package it.unibo.tw.web.servlets;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+import it.unibo.tw.web.beans.Feed;
+import it.unibo.tw.web.beans.FeedDb;
+
+import org.jabsorb.JSONSerializer;
+import org.jabsorb.serializer.MarshallException;
+
+import com.google.gson.Gson;
+
+public class JSONServlet extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
+	
+	private Gson gson;
+	
+	@Override
+	public void init() {
+		FeedDb feedDb = (FeedDb) this.getServletContext().getAttribute("feedDb");
+		
+		if (feedDb == null) {
+			feedDb = new FeedDb();
+			this.getServletContext().setAttribute("feedDb", feedDb);
+		}
+		
+		gson = new Gson();
+	}
+	
+	
+	
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		String category = req.getParameter("category");
+		
+		FeedDb feedDb = (FeedDb) this.getServletContext().getAttribute("feedDb");
+		List<Feed> feeds = feedDb.find(category);
+		
+		resp.getWriter().println("Category: "+category);
+		resp.getWriter().println(gson.toJson(feeds.toArray(new Feed[0])));
+	}
+}

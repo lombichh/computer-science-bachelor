@@ -1,0 +1,18 @@
+package it.unibo.tw.web.servlets;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.ServletException;
+import java.io.IOException;
+
+class CalculateOperationServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+	
+	@Override
+	public void doGet(ServletRequest req, ServletResponse resp) throws ServletException, IOException {
+		
+	}
+	
+}

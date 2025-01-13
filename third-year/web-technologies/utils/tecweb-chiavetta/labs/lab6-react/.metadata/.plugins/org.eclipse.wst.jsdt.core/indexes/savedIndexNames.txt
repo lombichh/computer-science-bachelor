@@ -1,0 +1,2 @@
+INDEX VERSION 1.4+/Users/matteolombardi/Uni/tecweb/labs/lab6/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+3212608884.index

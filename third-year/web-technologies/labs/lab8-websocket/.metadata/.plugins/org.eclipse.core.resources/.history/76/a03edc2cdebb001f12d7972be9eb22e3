@@ -1,0 +1,87 @@
+package servlets;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.websocket.*;
+import javax.websocket.server.ServerEndpoint;
+
+import com.google.gson.Gson;
+
+import beans.OperationReq;
+import beans.OperationResp;
+
+@ServerEndpoint("/actions")
+public class WebSocket {
+	
+	private Gson gson;
+	
+	private int requestCounter;
+	
+	@OnOpen
+	public void open(Session session) {
+		gson = new Gson();
+		requestCounter = 0;
+	}
+	
+	@OnClose
+	public void close(Session session) {
+		
+	}
+	
+	@OnError
+	public void onError(Session session, Throwable throwable) {
+		System.out.println("Error");
+	}
+	
+	@OnMessage
+	public void handleMessage(Session session, String msg) {
+		String resultMsg;
+		
+		if (msg.contains("operand")) {
+			// update operand request
+			resultMsg = gson.toJson(operationResp);
+		} else {
+			// calculate operation request
+			OperationResp operationResp = new OperationResp();
+
+			if (requestCounter < 3) {
+				requestCounter++;
+				operationResp.setValid(true);
+				
+				OperationReq operationReq = gson.fromJson(msg, OperationReq.class);
+				double result = calculateResult(operationReq);
+				operationResp.setResult(result);
+			}
+			
+			resultMsg = gson.toJson(operationResp);
+		}
+		
+		for (Session singleSession : session.getOpenSessions()) {
+			if (singleSession.isOpen()) {
+				try {
+					singleSession.getBasicRemote().sendText(resultMsg);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	private double calculateResult(OperationReq operationReq) {
+		double result = -1;
+		
+		if (operationReq.getOp().equals("+")) {
+			result = operationReq.getNum1() + operationReq.getNum2();
+		} else if (operationReq.getOp().equals("-")) {
+			result = operationReq.getNum1() - operationReq.getNum2();
+		} else if (operationReq.getOp().equals("*")) {
+			result = operationReq.getNum1() * operationReq.getNum2();
+		} else if (operationReq.getOp().equals("/")) {
+			result = operationReq.getNum1() / operationReq.getNum2();
+		}
+		
+		return result;
+	}
+}

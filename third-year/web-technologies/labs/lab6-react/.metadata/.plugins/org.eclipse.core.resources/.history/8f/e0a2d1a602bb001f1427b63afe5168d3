@@ -1,0 +1,13 @@
+class ScientificKeyBoard extends React.Component {
+	render() {
+		return (
+			<div className="keypad">
+				<hr/>
+		        <button name="(" onClick={this.props.onClick}>log<sub>e</sub>(x)</button>
+		        <button name="CE" onClick={this.props.onClick}>sqrt(x)<sub></sub></button>
+		        <button name=")" onClick={this.props.onClick}>e<sub>x</sub></button>
+		        <button name="C" onClick={this.props.onClick}>1/x<sub></sub</button>
+	        </div>
+		);
+	}
+}

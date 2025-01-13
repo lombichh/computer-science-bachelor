@@ -1,0 +1,31 @@
+
+package it.unibo.tw.es1.servlets;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+public class StatisticheServlet extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		String id = req.getParameter("id");
+		int firstDay = req.getParameter("firstDay");
+		int lastDay = req.getParameter("lastDay");
+		
+		float guadagno = 0;
+		
+		for (Articolo art : merceVenduta.getMerce()) {
+			if ((id.equals("") || art.getId().equals(id) && firstDay <= art.getDay() && lastDay <= art.lastDay())
+				guadagno += art.getPrice() * art.getAmount();
+		}
+	}
+	
+}

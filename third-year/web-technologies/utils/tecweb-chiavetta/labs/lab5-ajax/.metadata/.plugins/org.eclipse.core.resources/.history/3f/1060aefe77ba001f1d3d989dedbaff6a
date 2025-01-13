@@ -1,0 +1,91 @@
+function parsificaJSON( xml ) {
+   
+	// variabili di funzione
+	var
+
+		// Otteniamo la lista degli item dall'RSS 2.0 di edit
+		items = xml.getElementsByTagName("item"),
+
+		// Predisponiamo una struttura dati in cui memorrizzare le informazioni di interesse
+		itemNodes = new Array(),
+
+		// la variabile di ritorno, in questo esempio, e' testuale
+		risultato = "";
+
+	// ciclo di lettura degli elementi
+	for (    var a = 0, b = items.length;    a < b;   a++   ) {
+		// [length al posto di push serve per evitare errori con vecchi browser]
+		itemNodes[a] = new Object();
+		itemNodes[a].title = leggiContenuto(items[a],"title");
+		itemNodes[a].description = leggiContenuto(items[a],"description");
+		itemNodes[a].link = leggiContenuto(items[a],"link");
+	}// for ( items )
+
+	// non resta che popolare la variabile di ritorno
+	// con una lista non ordinata di informazioni
+
+	// apertura e chiusura della lista sono esterne al ciclo for 
+	// in modo che eseguano anche in assenza di items
+	risultato = "<ul>";
+
+	for( var c = 0; c < itemNodes.length; c++ ) {
+		risultato += '<li class="item"><strong>' + itemNodes[c].title +'</strong><br/>';
+		risultato += itemNodes[c].description +"<br/>";
+		risultato += '<a href="' + itemNodes[c].link + '">approfondisci</a><br/></li>';
+	};
+
+	// chiudiamo la lista creata
+	risultato += "</ul>";
+
+     // restituzione dell'html da aggiungere alla pagina
+     return risultato;
+
+}// parsificaXml()
+
+
+function callbackJSON(theXhr, theElement) {
+	theElement.class = "content";
+	
+	if (theXhr.readyState === 2) {
+	    theElement.innerHTML = "Richiesta inviata...";
+	} else if (theXhr.readyState === 3) {
+    	theElement.innerHTML = "Ricezione della risposta...";
+	} else if (theXhr.readyState === 4) {
+		if (theXhr.status === 200) {
+			JSON.parse(theXhr.responseText);
+			theElement.innerHTML = gson.fromJson(theXhr.responseText, );
+		} else {
+			theElement.innerHTML = "Impossibile effettuare l'operazione richiesta.<br />";
+			theElement.innerHTML += "Errore riscontrato: " + theXhr.statusText;
+		}
+	}
+
+}
+
+
+
+function caricaFeedJSONIframe(theUri,theHolder) {
+	theHolder.innerHTML = '<iframe src="' + theUri + '" width="50%" height="50px">Il tuo browser non supporta gli iframe</iframe>';
+}
+
+
+
+function caricaFeedJSONAJAX(theUri, theElement, theXhr) {
+	theXhr.onreadystatechange = function() { callbackJSON(theXhr, theElement); };
+
+	try {
+		theXhr.open("get", theUri, true);
+	} catch(e) { alert(e); }
+
+	theXhr.send(null);
+}
+
+
+
+function caricaFeedJSON(uri,e) {
+	var xhr = myGetXmlHttpRequest();
+
+	if (xhr) caricaFeedJSONAJAX(uri,e,xhr); 
+	else caricaFeedJSONIframe(uri,e); 
+
+}

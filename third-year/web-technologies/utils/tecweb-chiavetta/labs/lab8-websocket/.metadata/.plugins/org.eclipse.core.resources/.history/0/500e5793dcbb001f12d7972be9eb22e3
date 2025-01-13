@@ -1,0 +1,25 @@
+
+<html>
+    <head>
+        <title>Calcolatrice</title>
+         <script type="text/javascript" src="scripts/utils.js"></script>
+         <script type="text/javascript" src="scripts/websocket.js"></script>
+         <link type="text/css" href="styles/default.css" rel="stylesheet"></link>
+    </head>
+    <body>
+    	<input id="num1" type="text" onkeyup="updateOperand(this.value)"></input>
+    	<select id="op">
+    		<option value="+" selected="selected">+</option>
+    		<option value="-">-</option>
+    		<option value="*">x</option>
+    		<option value="/">/</option>
+    	</select>
+    	<input id="num2" type="text"></input>
+    	
+    	<button onclick="calculateOperationResult(myGetElementById('num1').value, myGetElementById('num2').value, myGetElementById('op').value)">
+    		Calcola
+    	</button>
+    	
+    	<p>Risultato: <span id="result"></span></p>
+    </body>
+</html>

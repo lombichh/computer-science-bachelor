@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Exams</title>
+	</head>
+	
+	<body>
+		<p id="time"></p>
+		
+		<form>
+			<input type="text">
+			<input type="password">
+		</form>
+		
+		<script language="Javascript" src="scripts/exams.js"></script>
+	</body>
+</html>

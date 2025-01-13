@@ -1,0 +1,11 @@
+package it.unibo.tw.web.servlets;
+
+import javax.servlet.http.HttpServlet;
+
+class CalculateOperationServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+	
+	
+	
+}

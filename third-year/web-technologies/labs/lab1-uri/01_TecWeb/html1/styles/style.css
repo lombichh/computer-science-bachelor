@@ -1,0 +1,29 @@
+body {
+    background-color: greenyellow;
+    color: blueviolet;
+}
+
+.navbar {
+    width: 150px;
+    height: 100%;
+    float: left;
+    margin-right: 50px;
+    list-style-type: square;
+}
+
+.navbar > li {
+    background-color: white;
+    margin: 10px;
+}
+
+.navbar > li > a {
+    color: green;
+}
+
+#first_navbar_item {
+    color: red;
+}
+
+ul, ol {
+    list-style-position: inside;
+}

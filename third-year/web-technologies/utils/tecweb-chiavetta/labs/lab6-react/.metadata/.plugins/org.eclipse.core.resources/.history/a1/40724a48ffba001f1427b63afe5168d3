@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Start Web Application</title>
+		<link rel="StyleSheet" href="styles/style.css" type="text/css" media="all" />
+		<script src="./react-libs/react.js"></script>
+		<script src="./react-libs/react_dom.js"></script>
+		<script src="./react-libs/babel.js"></script>    
+	</head>
+	<body>
+		<p>
+		Please wait for the web application to start... &nbsp;
+		<img alt="wait" title="wait" src="images/wait.gif"/>
+		</p>
+	</body>
+</html>
+

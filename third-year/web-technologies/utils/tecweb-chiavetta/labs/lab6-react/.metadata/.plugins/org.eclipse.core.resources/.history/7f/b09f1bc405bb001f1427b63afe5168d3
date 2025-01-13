@@ -1,0 +1,60 @@
+function getServerCalculationAJAX(xhr, state) {
+	theElement.class = "content";
+
+	// verifica dello stato
+	if ( theXhr.readyState === 2 ) {
+	    	theElement.innerHTML = "Richiesta inviata...";
+	} // if 2
+
+	else if ( theXhr.readyState === 3 ) {
+    		theElement.innerHTML = "Ricezione della risposta...";
+	} // else if 3
+
+	else if ( theXhr.readyState === 4 ) {
+
+		// verifica della risposta da parte del server
+		if ( theXhr.status === 200 ) {
+			// operazione avvenuta con successo
+			theElement.innerHTML = theXhr.responseText;
+		} // if 200
+
+		else {
+			// errore di caricamento
+			theElement.innerHTML = "Impossibile effettuare l'operazione richiesta.<br />";
+			theElement.innerHTML += "Errore riscontrato: " + theXhr.statusText;
+		} // else (if !200)
+
+	}
+}
+
+
+
+function requestServerCalculationIframe(theUri,theHolder) {
+	theHolder.innerHTML = '<iframe src="' + theUri + '" width="50%" height="50px">Il tuo browser non supporta gli iframe</iframe>';
+}
+
+
+
+function requestServerCalculationAJAX(uri, xhr, state) {
+	xhr.onreadystatechange = function() {
+		getServerCalculationResult(xhr, state);
+	}
+
+	try {
+		xhr.open("get", uri, true);
+	}
+	catch(e) { alert(e); }
+
+	xhr.send(null);
+
+}
+
+
+
+function requestServerCalculation(uri, state) {
+	var xhr = myGetXmlHttpRequest();
+	
+	if (xhr) requestServerCalculationAJAX(uri, xhr, state);
+	else requestServerCalculationIframe(uri, state);
+
+}

@@ -1,0 +1,35 @@
+-differenza container pesante e container leggero
+-ciclo di vita servlet (normale/multithread e deprecato/singlethread)
+-come si fa caching sul web browser in http
+-dependency injection spring
+-direttiva include jsp
+-differenza tra due send su un unico oggetto xmlhttprequest e due send su due oggetti separati
+-quando usare jsp e quanso usare servlet
+-differenza metodi get e post
+-come funziona https
+-activation e passivation 
+-jsf, differrenza con jsp
+-informazioni contenute nei cookie (campi)
+-ciclo di vita jsp
+-differenza scope page e scope request
+-cosa vuol dire MVC e come si usa in spring, ci sono controller in spring? e come si fa un controller
+-templating jsf
+-eventi lato server websocket
+-polling, long polling, response forever, multiple connections
+-differenza stato props e stato state react
+-differrenza http 1.0, http 1.1 e http 1.1 con pipelining
+-all'interno di una servlet posso vedere un javabean con scope session definito in una jsp? come posso accedervi?
+-operazioni sui file in node
+-cookie in javascript
+-direttiva page
+-definizione di pagine web dinamiche e pagine web attive e differenze
+-cgi
+-ejb session bean stateful e stateless
+-differenza tra java model 1 e java model 2
+-cookie: che cos'è e come si può usare in java lato server
+-http, altre richieste oltre get e post (put, delete, option, head, trace)
+-aggiornamento proxy cache (Freshness, Validation, Invalidation)
+-riassumere punti fondamentali di innovazione di node.js
+-differenza inculde/forward
+-differenza jsp e servlet
+-perché e websocket non sono un protocollo ma un upgrade

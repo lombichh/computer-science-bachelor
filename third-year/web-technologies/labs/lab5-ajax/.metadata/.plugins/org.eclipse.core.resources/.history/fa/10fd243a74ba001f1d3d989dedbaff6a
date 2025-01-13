@@ -1,0 +1,20 @@
+package it.unibo.tw.web.servlets;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class JSONServlet extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Override
+	public void init() {
+		
+	}
+	
+	@Override
+	public void doPost(ServletRequest request, ServletResponse response)
+		throws ServletException, IOException {
+		
+	}
+}

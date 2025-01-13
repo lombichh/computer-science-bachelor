@@ -1,0 +1,26 @@
+package it.unibo.tw.web.servlets;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import java.io.IOException;
+
+class CalculateOperationServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int num = Integer.parseInt(req.getParameter("num"));
+		String op = req.getParameter("op");
+		
+		String result
+		if (op == "log_e") ;
+		else if (op == "sqrt") ;
+		else if (op == "e_x") ;
+		else if (op == "1/x") ;
+		
+		
+	}
+}

@@ -1,0 +1,82 @@
+<!-- pagina per la gestione di errori -->
+<%@ page errorPage="../errors/failure.jsp"%>
+
+<!-- accesso alla sessione -->
+<%@ page session="true"%>
+
+<!-- import di classi Java -->
+<%@ page import="it.unibo.tw.web.beans.Cart"%>
+<%@ page import="it.unibo.tw.web.beans.Catalogue"%>
+<%@ page import="it.unibo.tw.web.beans.Item"%>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.Set"%>
+
+<!-- oggetti e metodi richiamati nel seguito -->
+<%!
+void order(catalogue, cart) {
+	
+	// remove items from catalogue
+	Set<Item> cartItems = cart.getItems();
+	
+	// write order on a file
+	
+	// empty cart
+	
+}
+%>
+
+<html>
+	<head>
+		<meta name="Author" content="pisi79">
+		<title>Checkout JSP</title>
+		<link rel="stylesheet" href="<%= request.getContextPath() %>/styles/default.css" type="text/css"/>
+	</head>
+
+	<body>	
+
+		<%@ include file="../fragments/header.jsp" %>
+		<%@ include file="../fragments/menu.jsp" %>
+	
+		<div id="main" class="clear">
+		
+			<jsp:useBean id="catalogue" class="it.unibo.tw.web.beans.Catalogue" scope="application" />
+			<jsp:useBean id="cart" class="it.unibo.tw.web.beans.Cart" scope="session" />
+			
+			<%
+				if ( request.getParameter("order") != null && request.getParameter("add").equals("ok") ) {
+					order(catalogue, cart);
+				}
+			%>
+
+			<p>Current cart:</p>
+			<table class="formdata">
+				<tr>
+					<th style="width: 34%">Description</th>
+					<th style="width: 33%">Price</th>
+					<th style="width: 33%">Quantity</th>
+				</tr>
+				<% 
+				Set<Item> cartItems = cart.getItems();
+				for( Item anItem : cartItems ){
+				%> 
+					<tr>
+						<td><%= anItem.getDescription() %></td>
+						<td><%= anItem.getPrice() %> &#8364;</td>
+						<td><%= cart.getOrder(anItem) %></td>
+					</tr>
+				<% } %>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+			
+			<a href="?order=ok %>">Order</a>
+
+		</div>
+	
+		<%@ include file="../fragments/footer.jsp" %>
+
+	</body>
+</html>

@@ -1,0 +1,26 @@
+function onClick() {
+	
+}
+
+var formElements = new Array(10);
+
+formElements[0] = document.forms[0].elements[0];
+formElements[1] = document.forms[0].elements[1];
+formElements[2] = document.forms[0].elements[2];
+formElements[3] = document.forms[0].elements[3];
+formElements[4] = document.forms[0].elements[4];
+formElements[5] = document.forms[0].elements[5];
+formElements[6] = document.forms[0].elements[6];
+
+formElements[7] = document.forms[0].elements[7];
+formElements[8] = document.forms[0].elements[8];
+formElements[9] = document.forms[0].elements[9];
+
+for (const formElement of formElements) {
+	formElement.onclick = onClick;
+	formElement.onchange = onChange;
+	formElement.onfocus = onFocus;
+	formElement.onblur = onBlur;
+	formElement.onselect = onSelect;
+	formElement.ondblclick = onDblClick;
+}

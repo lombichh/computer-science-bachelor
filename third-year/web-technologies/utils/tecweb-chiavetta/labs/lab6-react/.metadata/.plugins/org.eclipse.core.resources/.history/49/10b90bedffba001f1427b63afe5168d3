@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Start Web Application</title>
+		<link rel="StyleSheet" href="styles/style.css" type="text/css" media="all" />
+		<script src="./react-libs/react.js"></script>
+		<script src="./react-libs/react_dom.js"></script>
+		<script src="./react-libs/babel.js"></script>    
+	</head>
+	<body>
+		<div id="root"></div>
+		
+		<script src="./react-components/"
+	</body>
+</html>
+

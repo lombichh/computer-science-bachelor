@@ -1,0 +1,27 @@
+
+package it.unibo.tw.es1.servlets;
+
+import java.io.IOException;
+import java.util.Vector;
+
+import it.unibo.tw.es1.beans.InsiemeDiArticoli;
+import it.unibo.tw.es1.beans.Articolo;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+
+public class StatisticheServlet extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+
+		
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/statistiche.jsp");
+		dispatcher.forward(req, resp);
+	}
+	
+}

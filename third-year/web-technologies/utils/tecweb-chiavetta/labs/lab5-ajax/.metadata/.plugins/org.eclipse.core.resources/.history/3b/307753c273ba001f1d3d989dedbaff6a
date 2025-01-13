@@ -1,0 +1,8 @@
+package it.unibo.tw.web.servlets;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class JSONServlet implements HttpServlet {
+	
+}

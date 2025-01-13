@@ -1,0 +1,11 @@
+var textinput = document.forms[0].elements[0];
+var passwordinput = document.forms[0].elements[1];
+var fileinput = document.forms[0].elements[2];
+var checkboxinput = document.forms[0].elements[3];
+var radio1input = document.forms[0].elements[4];
+var radio2input = document.forms[0].elements[5];
+var selectinput = document.forms[0].elements[6];
+
+var textinput = document.forms[0].elements[7];
+var textinput = document.forms[0].elements[8];
+var textinput = document.forms[0].elements[9];

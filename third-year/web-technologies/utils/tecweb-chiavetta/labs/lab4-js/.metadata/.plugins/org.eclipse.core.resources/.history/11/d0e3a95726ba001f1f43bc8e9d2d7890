@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Exams</title>
+	</head>
+	
+	<body>
+		<p id="time"></p>
+		
+		<form>
+			<input type="text">
+			<input type="password">
+			<input type="file">
+			<input type="checkbox">
+			<input type="radio">
+			<input type="radio">
+			<select>
+				<option value="first" selected="selected">First Option</option>
+				<option value="first">Second Option</option>
+			</select>
+			
+			<button type="button">Button</button>
+			<button type="submit">Submit</button>
+			<button type="reset">Reset</button>
+		</form>
+		
+		<script language="Javascript" src="scripts/exams.js"></script>
+	</body>
+</html>

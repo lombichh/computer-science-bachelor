@@ -1,0 +1,81 @@
+const formEventsOutput = document.getElementById("formEventsOutput");
+
+function onClick(event) {
+	formEventsOutput.innerHTML = formEventsOutput.innerHTML
+		+ "<br/>OnClick: " + event.target.name;
+}
+
+function onChange(event) {
+	formEventsOutput.innerHTML = formEventsOutput.innerHTML
+			+ "<br/>OnChange: " + event.target.name;
+}
+
+function onFocus(event) {
+	formEventsOutput.innerHTML = formEventsOutput.innerHTML
+			+ "<br/>OnFocus: " + event.target.name;
+}
+
+function onBlur(event) {
+	formEventsOutput.innerHTML = formEventsOutput.innerHTML
+			+ "<br/>OnBlur: " + event.target.name;
+}
+
+function onSelect(event) {
+	formEventsOutput.innerHTML = formEventsOutput.innerHTML
+			+ "<br/>OnSelect: " + event.target.name;
+}
+
+function onDblClick(event) {
+	formEventsOutput.innerHTML = formEventsOutput.innerHTML
+			+ "<br/>OnDblClick: " + event.target.name;
+}
+
+var formElements = new Array(10);
+
+formElements[0] = document.forms[0].elements[0];
+formElements[1] = document.forms[0].elements[1];
+formElements[2] = document.forms[0].elements[2];
+formElements[3] = document.forms[0].elements[3];
+formElements[4] = document.forms[0].elements[4];
+formElements[5] = document.forms[0].elements[5];
+formElements[6] = document.forms[0].elements[6];
+
+formElements[7] = document.forms[0].elements[7];
+formElements[8] = document.forms[0].elements[8];
+formElements[9] = document.forms[0].elements[9];
+
+for (const formElement of formElements) {
+	formElement.onclick = onClick;
+	formElement.onchange = onChange;
+	formElement.onfocus = onFocus;
+	formElement.onblur = onBlur;
+	formElement.onselect = onSelect;
+	formElement.ondblclick = onDblClick;
+}
+
+const textAreaOutput = document.getElementById("textareaoutput");
+
+function textAreaOnMouseOver(event) {
+	event.target.style.background = "yellow";
+}
+
+function textAreaOnMouseOut(event) {
+	event.target.style.background = "white";
+}
+
+function textAreaOnKeyUp(event) {
+	const remainedChars = 64 - parseInt(event.target.value.length);
+
+	if (remainedChars < 0) {
+		event.target.value = 
+					event.target.value.substring(0, event.target.value.length - 1);
+		textAreaOutput.innerHTML = "Caratteri rimasti: 0";
+	}
+		
+	textAreaOutput.innerHTML = "Caratteri rimasti: " + remainedChars;
+}
+
+const textArea = document.getElementById("textarea");
+textArea.onmouseover = textAreaOnMouseOver;
+textArea.onmouseout = textAreaOnMouseOut;
+textArea.onkeyup = textAreaOnKeyUp;

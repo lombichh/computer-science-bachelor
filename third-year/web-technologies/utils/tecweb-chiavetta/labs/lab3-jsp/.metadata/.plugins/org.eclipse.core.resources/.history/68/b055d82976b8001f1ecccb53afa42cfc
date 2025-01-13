@@ -1,0 +1,86 @@
+
+package it.unibo.tw.es1.servlets;
+
+import java.io.IOException;
+import java.util.Vector;
+
+import it.unibo.tw.es1.beans.InsiemeDiArticoli;
+import it.unibo.tw.es1.beans.Articolo;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+
+public class StatisticheServlet extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		/*String id = req.getParameter("id");
+		int firstDay = Integer.parseInt(req.getParameter("firstDay"));
+		int lastDay = Integer.parseInt(req.getParameter("lastDay"));
+		
+		float guadagno = 20;
+		
+		InsiemeDiArticoli merceVenduta = (InsiemeDiArticoli) this.getServletContext().getAttribute("merceVenduta");
+		for (Articolo art : merceVenduta.getMerce()) {
+			if ((id.equals("") || art.getId().equals(id)) && firstDay <= art.getDay() && lastDay >= art.getDay())
+				guadagno += art.getPrice() * art.getAmount();
+		}
+		
+		// save guadagno in cookies
+		
+		
+		// set guadagno in response
+		req.setAttribute("guadagnoRichiestaAttuale", String.valueOf(guadagno));
+		
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/statistiche.jsp");
+		dispatcher.forward(req, resp);*/
+		
+		String richiesta = req.getParameter("req");
+		if( richiesta!=null && richiesta.equals("calcola") ){
+			InsiemeDiArticoli vendite = (InsiemeDiArticoli)this.getServletContext().getAttribute("merceVenduta");
+			
+			// recupero i parametri della ricerca
+			Vector<Articolo> articoliVenduti = vendite.getMerce();
+			String id = req.getParameter("id");
+			int firstDay = Integer.parseInt(req.getParameter("firstDay"));
+			int lastDay = Integer.parseInt(req.getParameter("lastDay"));
+			
+			// effettuo il calcolo del guadagno
+			float guadagno = 0;
+			for(int i=0; i<articoliVenduti.size(); i++){
+				Articolo ar = articoliVenduti.elementAt(i);
+				if( id.equals("") || id.equals(ar.getId())){
+					if( firstDay<=ar.getDay() && lastDay>=ar.getDay() ){
+						guadagno += ar.getAmount()*ar.getPrice();
+					}
+				}
+			}
+			
+			// inserisco il risultato in vari cookie
+			Cookie cookie1 = new Cookie("id", id);
+			Cookie cookie2 = new Cookie("firstDay", ""+firstDay);
+			Cookie cookie3 = new Cookie("lastDay", ""+lastDay);
+			Cookie cookie4 = new Cookie("guadagno", ""+guadagno);
+			cookie1.setMaxAge(60*60); // 1 ora
+			cookie2.setMaxAge(60*60); // 1 ora
+			cookie3.setMaxAge(60*60); // 1 ora
+			cookie4.setMaxAge(60*60); // 1 ora
+	        resp.addCookie(cookie1);
+	        resp.addCookie(cookie2);
+	        resp.addCookie(cookie3);
+	        resp.addCookie(cookie4);
+	        
+	        // inserisco il risultato nella richiesta che viene passata alla JSP
+	        req.setAttribute("guadagnoRichiestaAttuale", guadagno);
+		}
+
+		// passo il controllo alla JSP
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/statistiche.jsp");
+		dispatcher.forward(req, resp);
+	}
+	
+}

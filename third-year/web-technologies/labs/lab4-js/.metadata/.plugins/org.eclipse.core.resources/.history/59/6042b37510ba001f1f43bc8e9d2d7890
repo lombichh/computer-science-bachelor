@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Exams</title>
+	</head>
+	
+	<body>
+		<h1>Analisi statistica dei voti riportati negli esami</h1>
+		<div id="output">Testo originale</div>
+		<p id="par">Testo paragrafo</p>
+		<script language="Javascript" src="scripts/exams.js"></script>
+	</body>
+</html>
