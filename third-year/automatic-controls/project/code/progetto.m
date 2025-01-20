@@ -1,7 +1,6 @@
 % Progetto controllo di una tavola rotante motorizzata
 %
 % PARAMETRI DEL SISTEMA
-%
 % k       = 1000
 % beta    = 0.77
 % alpha   = 25°
@@ -21,7 +20,7 @@
 
 clear all; close all; clc
 
-% solo per visualizzione, pulsazione minima e massima
+% Solo per visualizzione, pulsazione minima e massima
 omega_plot_min = 1e-2;
 omega_plot_max = 1e7;
 
@@ -41,9 +40,9 @@ x_e  = [x_1e; x_2e];
 u_e  = (k*x_1e)/tau(x_1e);
 
 %% Funzione di Trasferimento
-tau_ddx1e = (cos(alpha)*(sin(alpha))^2*sin(2*x_1e))/((1-(sin(alpha))^2*(cos(x_1e))^2)^2);
+tau_ddx1e = -(cos(alpha)*(sin(alpha))^2*sin(2*x_1e))/((1-(sin(alpha))^2*(cos(x_1e))^2)^2);
 
-A = [0 1; (1/J)*(-u_e*tau_ddx1e-k) -beta/J];
+A = [0 1; (1/J)*(u_e*tau_ddx1e-k) -beta/J];
 B = [0; tau(x_1e)/J];
 C = [1 0];
 D = 0;
@@ -53,19 +52,19 @@ GG = C*inv(s*eye(2) - A)*B + D;
 
 %% Specifiche
 
-% ampiezze gradini
+% Ampiezze gradini
 WW = 2;
 DD = 1.2;
 
-% errore a regime
+% Errore a regime
 e_star = 0.05;
 
-% attenuazione disturbo sull'uscita
+% Attenuazione disturbo sull'uscita
 A_d = 35;
 omega_d_min = 0;
 omega_d_MAX = 0.7;
 
-% attenuazione disturbo di misura
+% Attenuazione disturbo di misura
 A_n = 69;
 omega_n_min = 2*1e5;
 omega_n_MAX = 5*1e6;
@@ -97,7 +96,7 @@ Mf_star = max(xi_star*100, Mf_star_esp); % Mf_star = max(45.6, 35) ~ 45.6
 omega_c_min = 300/(Mf_star*T_star); % omega_c >= 300/(Mf*T^*) ~ 1097
 omega_c_max = omega_n_min; % omega_c <= 2*10^5
 
-% upper e lower bounds (teoricamento + e - infinito)
+% Upper e lower bounds (teoricamento + e - infinito)
 mag_low = -400;
 mag_up = 150;
 phi_low = -270;
@@ -134,11 +133,11 @@ title("Funzione di trasferimento iniziale con specifiche");
 
 %% Design del regolatore statico - proporzionale senza poli nell'origine
 
-% valore minimo prescritto per L(0)
+% Valore minimo prescritto per L(0)
 mu_s_error = (DD+WW)/e_star;
 mu_s_dist  = 10^(A_d/20);
 
-% guadagno minimo del regolatore ottenuto come L(0)/G(0)
+% Guadagno minimo del regolatore ottenuto come L(0)/G(0)
 G_0 = abs(evalfr(GG, 0));
 G_omega_d_MAX = abs(evalfr(GG, j*omega_d_MAX));
 
@@ -175,7 +174,7 @@ mag_omega_c_star = abs(evalfr(GG_e, j*omega_c_star));
 arg_omega_c_star = rad2deg(angle(evalfr(GG_e, j*omega_c_star)));
 
 M_star = 1/mag_omega_c_star;
-phi_star = Mf_star - 180 - arg_omega_c_star;
+phi_star = Mf_star - 180 + 5 - arg_omega_c_star; % + 5 gradi per margine di sicurezza
 
 tau = (M_star - cos(phi_star*pi/180))/(omega_c_star*sin(phi_star*pi/180));
 alpha_tau = (cos(phi_star*pi/180) - 1/M_star)/(omega_c_star*sin(phi_star*pi/180));
@@ -204,10 +203,61 @@ patch(Bnd_Ta_x, Bnd_Ta_y, 'b', 'FaceAlpha', 0.2, 'EdgeAlpha', 0);
 % Plot Bode con margini di stabilità
 margin(LL, {omega_plot_min, omega_plot_max});
 grid on; zoom on;
-title("Funzione d'anello con regolatore completo");
+title("Sistema con regolatore completo");
 
 % Specifiche su fase
 patch(Bnd_Mf_x, Bnd_Mf_y, 'm', 'FaceAlpha', 0.2, 'EdgeAlpha', 0);
 
 % Legenda colori
 legend(legend_args);
+
+%% Test del sistema linearizzato
+figure(5);
+hold on;
+
+% Funzione di sensitività complementare
+FF = LL/(1+LL);
+% Funzione di sensitività
+SS = 1/(1+LL);
+
+% Simulazione
+T_simulation = 4*T_star;
+tt = 0:1e-6:T_simulation;
+
+WW_test = 2;
+
+DD_test = 0.2;
+omega_d_test = 0.1;
+dd_test = DD_test*sin(omega_d_test*tt) + DD_test*sin(omega_d_test*2*tt) + DD_test*sin(omega_d_test*3*tt) + DD_test*sin(omega_d_test*4*tt);
+
+NN_test = 0.2;
+omega_n_test = 2*10^5;
+nn_test = NN_test*sin(omega_n_test*tt) + NN_test*sin(omega_n_test*2*tt) + NN_test*sin(omega_n_test*3*tt) + NN_test*sin(omega_n_test*4*tt);
+
+y_d_test = lsim(SS, dd_test, tt);
+y_n_test = lsim(-FF, nn_test, tt);
+step_test = WW_test * (tt >= T_star); % Gradino ritardato a t = 0.006 secondi
+[y_w_test, ~] = lsim(FF, step_test, tt);
+
+yy_test = y_w_test + y_d_test + y_n_test;
+
+plot(tt, step_test, 'r');
+plot(tt, yy_test, 'b');
+grid on, zoom on;
+title("Risposta al gradino del sistema linearizzato con disturbo e rumore");
+
+LV = WW*evalfr(FF, 0);
+
+% Vincolo sovraelongazione
+patch([0, T_simulation, T_simulation, 0], [LV*(1+S_star/100), LV*(1+S_star/100), LV*2, LV*2], 'r', 'FaceAlpha', 0.2, 'EdgeAlpha', 0);
+
+% Vincolo tempo di assestamento al 5%
+patch([2*T_star, T_simulation, T_simulation, 2*T_star], [LV*(1-0.05), LV*(1-0.05), 0, 0],'g','FaceAlpha', 0.2,'EdgeAlpha', 0.5);
+patch([2*T_star, T_simulation, T_simulation, 2*T_star], [LV*(1+0.05), LV*(1+0.05), LV*2, LV*2], 'g', 'FaceAlpha', 0.2,'EdgeAlpha', 0.5);
+
+ylim([0, LV*2]);
+
+legend('Gradino', 'Risposta al gradino', 'Vincolo sovraelongazione', 'Vincolo tempo di assestamento');
+
+%% Test del sistema non lineare
+open("progetto_simulink.slx") % Apre il progetto simulink
