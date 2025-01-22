@@ -1,0 +1,3 @@
+Lista dei file con descrizione:
+- progetto_matlab.m: script principale la quale esecuzione genera le figure presenti nella relazione e apre automaticamente 'progetto_simulink.slx'.
+- progetto_simulink.slx: modello contenente il diagramma a blocchi del sistema non lineare. Eseguire per simulare la risposta al gradino di tale sistema. Viene aperto in maniera automatica tramite l'esecuzione di 'progetto_matlab.m'.

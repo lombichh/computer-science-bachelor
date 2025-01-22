@@ -88,6 +88,10 @@ grid on, zoom on;
 title("Funzione di trasferimento iniziale");
 
 %% Mappatura specifiche
+% Specifica errore
+A_e = 20*log10((DD+WW)/e_star);
+A_ed = max(A_e, A_d); % L(0, 0.7) >= max(A_e, A_d) ~ 36.13
+
 % Specifica sovraelongazione => Margine di fase
 xi_star = abs(log(S_star/100))/sqrt(pi^2 + log(S_star/100)^2);
 Mf_star = max(xi_star*100, Mf_star_esp); % Mf_star = max(45.6, 35) ~ 45.6
@@ -101,9 +105,9 @@ mag_low = -400;
 mag_up = 150;
 phi_low = -270;
 
-% Mappatura specifica su d
-Bnd_d_x = [eps; omega_d_MAX; omega_d_MAX; eps]; % eps = il più piccolo numero positivo rappresentabile (con 0 non si vede)
-Bnd_d_y = [A_d; A_d; mag_low; mag_low];
+% Mappatura specifica su e e d
+Bnd_d_x = [omega_plot_min; omega_d_MAX; omega_d_MAX; omega_plot_min]; % eps = il più piccolo numero positivo rappresentabile (con 0 non si vede)
+Bnd_d_y = [A_ed; A_ed; mag_low; mag_low];
 
 % Mappatura specifica su n
 Bnd_n_x = [omega_n_min; omega_n_MAX; omega_n_MAX; omega_n_min];
@@ -131,17 +135,24 @@ margin(GG, {omega_plot_min, omega_plot_max});
 grid on, zoom on;
 title("Funzione di trasferimento iniziale con specifiche");
 
+% Mappatura specifiche su fase
+patch(Bnd_Mf_x, Bnd_Mf_y, 'm', 'FaceAlpha', 0.2, 'EdgeAlpha', 0);
+
+% Legenda colori
+legend_args = ["\omega_c", "A_n", "A_{e,d}", "L(j\omega)", "M_f"];
+legend(legend_args);
+
 %% Design del regolatore statico - proporzionale senza poli nell'origine
 
-% Valore minimo prescritto per L(0)
-mu_s_error = (DD+WW)/e_star;
-mu_s_dist  = 10^(A_d/20);
+% Valore minimo prescritto per L(0), quello per e_star già calcolato
+l_o_error = 10^(A_e/20);
+l_o_dist  = 10^(A_d/20);
 
 % Guadagno minimo del regolatore ottenuto come L(0)/G(0)
 G_0 = abs(evalfr(GG, 0));
 G_omega_d_MAX = abs(evalfr(GG, j*omega_d_MAX));
 
-RR_s = max(mu_s_error/G_0, mu_s_dist/G_omega_d_MAX); % RR_s = max(106223, 78392) ~ 106463
+RR_s = max(l_o_error/G_0, l_o_dist/G_omega_d_MAX); % RR_s = max(106223, 78392) ~ 106463
 
 % Sistema esteso
 GG_e = RR_s*GG;
@@ -164,7 +175,6 @@ title("Sistema con regolatore statico");
 patch(Bnd_Mf_x, Bnd_Mf_y, 'm', 'FaceAlpha', 0.2, 'EdgeAlpha', 0);
 
 % Legenda colori
-legend_args = ["\omega_c", "A_n", "A_d", "G(j\omega)", "M_f"];
 legend(legend_args);
 
 %% Design del regolatore dinamico - rete ritardatrice
@@ -212,29 +222,27 @@ patch(Bnd_Mf_x, Bnd_Mf_y, 'm', 'FaceAlpha', 0.2, 'EdgeAlpha', 0);
 legend(legend_args);
 
 %% Test del sistema linearizzato
-figure(5);
-hold on;
-
 % Funzione di sensitività complementare
 FF = LL/(1+LL);
 % Funzione di sensitività
 SS = 1/(1+LL);
 
-% Simulazione
+% Test risposta al gradino
+figure(5);
+hold on;
+
 T_simulation = 4*T_star;
 tt = 0:1e-6:T_simulation;
 
 WW_test = 2;
-
 DD_test = 0.2;
 omega_d_test = 0.1;
-dd_test = DD_test*sin(omega_d_test*tt) + DD_test*sin(omega_d_test*2*tt) + DD_test*sin(omega_d_test*3*tt) + DD_test*sin(omega_d_test*4*tt);
-
 NN_test = 0.2;
 omega_n_test = 2*10^5;
-nn_test = NN_test*sin(omega_n_test*tt) + NN_test*sin(omega_n_test*2*tt) + NN_test*sin(omega_n_test*3*tt) + NN_test*sin(omega_n_test*4*tt);
 
+dd_test = DD_test*sin(omega_d_test*tt) + DD_test*sin(omega_d_test*2*tt) + DD_test*sin(omega_d_test*3*tt) + DD_test*sin(omega_d_test*4*tt);
 y_d_test = lsim(SS, dd_test, tt);
+nn_test = NN_test*sin(omega_n_test*tt) + NN_test*sin(omega_n_test*2*tt) + NN_test*sin(omega_n_test*3*tt) + NN_test*sin(omega_n_test*4*tt);
 y_n_test = lsim(-FF, nn_test, tt);
 step_test = WW_test * (tt >= T_star); % Gradino ritardato a t = 0.006 secondi
 [y_w_test, ~] = lsim(FF, step_test, tt);
@@ -258,6 +266,36 @@ patch([2*T_star, T_simulation, T_simulation, 2*T_star], [LV*(1+0.05), LV*(1+0.05
 ylim([0, LV*2]);
 
 legend('Gradino', 'Risposta al gradino', 'Vincolo sovraelongazione', 'Vincolo tempo di assestamento');
+
+% Test solo disturbo sull'uscita
+figure(6);
+hold on;
+
+tt = 0:9e-1:5e2;
+
+dd_single_test = DD_test*sin(omega_d_test*tt) + DD_test*sin(omega_d_test*2*tt) + DD_test*sin(omega_d_test*3*tt) + DD_test*sin(omega_d_test*4*tt);
+y_d_single_test = lsim(SS, dd_single_test, tt);
+
+plot(tt, dd_single_test, 'r');
+plot(tt, y_d_single_test, 'b');
+grid on, zoom on;
+title("Risposta al disturbo sull'uscita del sistema linearizzato");
+legend('d(t)','y_d(t)')
+
+% Test solo rumore di misura
+figure(7);
+hold on;
+
+tt = 0:1e-8:3e-4;
+
+nn_single_test = NN_test*sin(omega_n_test*tt) + NN_test*sin(omega_n_test*2*tt) + NN_test*sin(omega_n_test*3*tt) + NN_test*sin(omega_n_test*4*tt);
+y_n_single_test = lsim(-FF, nn_single_test, tt);
+
+plot(tt, nn_single_test, 'r');
+plot(tt, y_n_single_test, 'b');
+grid on, zoom on;
+title("Risposta al rumore di misura del sistema linearizzato");
+legend('n(t)','y_n(t)')
 
 %% Test del sistema non lineare
 open("progetto_simulink.slx") % Apre il progetto simulink

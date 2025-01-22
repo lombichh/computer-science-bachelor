@@ -1,0 +1,518 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[margin=3cm]{geometry}
+\usepackage[]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=2cm, bottom=3cm, left=1.5cm, right=1.5cm, heightrounded, bindingoffset=5mm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{psfrag,amsmath,amsfonts,verbatim}
+\usepackage{xcolor}
+\usepackage{color,soul}
+\usepackage{fancyhdr}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{newlfont}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{amsthm}
+%\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage{psfrag}
+\usepackage{footnote}
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{tikz, pgfplots}
+\usetikzlibrary{calc}
+
+
+\usetikzlibrary{snakes}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes,arrows}
+
+	
+	\tikzstyle{block} = [draw, fill=white, rectangle, 
+	minimum height=3em, minimum width=6em]
+	\tikzstyle{sum} = [draw, fill=white, circle, node distance=1cm]
+	\tikzstyle{input} = [coordinate]
+	\tikzstyle{output} = [coordinate]
+	\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+
+\newcommand{\courseacronym}{CAT}
+\newcommand{\coursename}{Controlli Automatici - T}
+\newcommand{\tipology}{\dots}
+\newcommand{\trace}{\dots}
+\newcommand{\projectname}{Controllo di una tavola rotante motorizzata}
+\newcommand{\group}{\dots}
+
+%opening
+\title{ \vspace{-1in}
+		\huge \strut \coursename \strut 
+		\\
+		\Large  \strut Progetto Tipologia B - Traccia 2
+		\\
+		\Large  \strut \projectname\strut
+		\\
+		\Large  \strut Gruppo 14\strut
+		\vspace{-0.4cm}
+}
+\author{Gabriele Cattabriga, Matteo Lombardi, Federica Massei, Elena Spinaci.}
+\date{}
+
+\begin{document}
+
+\maketitle
+\vspace{-0.5cm}
+% INTRODUCTION %
+Il progetto riguarda il controllo di una tavola rotante motorizzata dove l'accoppiamento tra motore e tavola avviene tramite un giunto cardanico, la cui dinamica viene descritta dalle seguenti equazioni differenziali: 
+
+\begin{subequations}\label{eq:system}
+\begin{align}
+	J\dot{\omega} &= \tau (\theta)C_m - \beta \omega - k\theta,
+\end{align}
+\begin{align}
+    \tau (\theta) &= \frac{\cos(\alpha)}{1-(\sin(\alpha)\cos(\theta))^2}.
+\end{align}
+\end{subequations}
+
+
+dove $\theta(t)$ rappresenta la posizione angolare della tavola, mentre, $\omega(t)$ è la sua velocità angolare. Si suppone di poter calcolare $\theta(t)$ in ogni momento. Inoltre:
+\begin{itemize}
+    \item \textbf{$\tau(\theta)$} è il rapporto di trasmissione del giunto cardanico funzione di $\theta$ e dell'angolo tra i due alberi $\alpha$;
+    \item \textbf{$J$} è il momento di inerzia della tavola;
+    \item \textbf{$C_m$} è la coppia generata dal motore elettrico, nonchè l'input di controllo;
+    \item \textbf{$\beta$} è l'attrito viscoso;
+    \item \textbf{$k$} è l'elasticità del disco.
+\end{itemize}
+
+\begin{center}
+    \begin{tabular}{|c|c|}
+    \multicolumn{2}{c}{\textbf{Specifiche progetto}} \\
+    \hline
+        Parametro & valore \\
+    \hline
+        $k$ & 1000 \\
+        $\beta$ & 0.77 \\
+        $\alpha$ & $25^\circ$ \\
+        $J$ & 549 \\
+        $\theta_e$ & $140^\circ$ \\
+    \hline
+    \end{tabular}
+\end{center}
+
+% PUNTO PRIMO %
+\newpage
+\section{Espressione del sistema in forma di stato e calcolo del sistema linearizzato intorno ad una coppia di equilibrio}
+
+Innanzitutto, esprimiamo il sistema~\eqref{eq:system} nella seguente forma di stato
+
+\begin{subequations}
+\begin{align}\label{eq:state_form}
+	\dot{x} &= f(x,u),
+	\\
+	y &= h(x,u).
+\end{align}
+\end{subequations}
+
+Pertanto, andiamo ad individuare lo stato $x$, l'ingresso $u$ e l'uscita $y$ del sistema come segue 
+
+\begin{align*}
+    x:=\begin{bmatrix}
+        x_1 \\
+        x_2
+    \end{bmatrix} =
+    \begin{bmatrix}
+        \theta \\
+        \dot{\theta}
+    \end{bmatrix} =
+    \begin{bmatrix}
+        \theta \\
+        \omega
+    \end{bmatrix}, 
+    \quad u := C_m, \quad y := x_1.
+\end{align*}
+
+Coerentemente con questa scelta, ricaviamo dal sistema~\eqref{eq:system} la seguente espressione per $f$ ed $h$
+
+\begin{align*}
+    f(x,u) &:= \begin{bmatrix}
+        x_2 \\
+        \frac{\tau(x_1)u - \beta x_2 - kx_1}{J}
+    \end{bmatrix},
+    \\
+    h(x,u) &:= x_1.
+\end{align*}
+
+Una volta calcolate $f$ ed $h$ esprimiamo~\eqref{eq:system} nella seguente forma di stato
+
+\begin{subequations}\label{eq:our_system_state_form}
+\begin{align}
+    \begin{bmatrix}
+        \dot{x}_1
+        \\
+        \dot{x}_2
+    \end{bmatrix} &= \begin{bmatrix}
+        x_2 \\
+        \frac{\tau(x_1)u - \beta x_2 - kx_1}{J}
+    \end{bmatrix}, \label{eq:state_form_1}
+    \\
+    y &= x_1.
+\end{align}
+\end{subequations}
+
+Per trovare la coppia di equilibrio $(x_e, u_e)$ di~\ref{eq:our_system_state_form}, andiamo a risolvere il seguente sistema di equazioni
+
+\begin{equation}
+    \begin{cases}
+        x_2  = 0
+        \\
+        \frac{\tau(x_1)u - \beta x_2 - kx_1}{J} = 0
+    \end{cases}\,.
+\end{equation}
+
+Sapendo che $x_1 = \theta$ otteniamo
+
+\begin{align*}
+    \begin{cases}
+        x_2 = 0
+        \\
+        \tau(\theta)u - k\theta = 0
+    \end{cases}
+\end{align*}
+
+Risolvendo per u e utilizzando il parametro $\theta_e = 140^\circ$ dato, otteniamo 
+
+\begin{align}
+    x_e := \begin{bmatrix}
+        \theta_e
+        \\ 0
+    \end{bmatrix} = \begin{bmatrix}
+        140^\circ
+        \\ 0
+    \end{bmatrix},
+    \quad u_e = 2413.49 \ N \cdot m.\label{eq:equilibirum_pair}
+\end{align}
+
+Definiamo le variabili alle variazioni $\delta x$, $\delta u$ e $\delta y$ come
+
+\begin{align*}
+    \delta x &= x(t) - x_e, 
+    \quad
+    \delta u = u(t) - u_e, 
+    \quad
+    \delta y = y(t) - y_e.
+\end{align*}
+
+L'evoluzione del sistema espressa nelle variabili alle variazioni pu\`o essere approssimativamente descritta mediante il seguente sistema lineare
+
+\begin{subequations}\label{eq:linearized_system}
+\begin{align}
+    \delta \dot{x} &= A\delta x + B\delta u
+    \\
+    \delta y &= C\delta x + D\delta u,
+\end{align}
+\end{subequations}
+
+dove le matrici $A$, $B$, $C$ e $D$ vengono calcolate come
+
+\begin{subequations}
+\begin{align}
+    A &= \frac{\partial f}{\partial x}\bigg|_{\substack{x = x_e \\ u = u_e}} \approx \begin{bmatrix}
+        0 & 1
+        \\ -0.9470 & -0.0014
+    \end{bmatrix}
+    \\
+    B &= \frac{\partial f}{\partial u}\bigg|_{\substack{x = x_e \\ u = u_e}} \approx \begin{bmatrix}
+        0
+        \\ 0.00184
+    \end{bmatrix}
+    \\
+    C &= \frac{\partial h}{\partial x}\bigg|_{\substack{x = x_e \\ u = u_e}} = \begin{bmatrix}
+        1 & 0
+    \end{bmatrix}
+    \\
+    D &= \frac{\partial h}{\partial u}\bigg|_{\substack{x = x_e \\ u = u_e}} = 0
+\end{align}
+\end{subequations}
+
+Più in dettaglio
+
+\begin{align*}
+A &= \begin{bmatrix}
+    \frac \partial {\partial x_1} f_1 & \frac \partial {\partial x_2} f_1
+    \\ \frac \partial {\partial x_1} f_2 & \frac \partial {\partial x_2} f_2
+\end{bmatrix} \big |_{\substack{x = x_e \\ u = u_e}}
+= \begin{bmatrix}
+    0 & 1
+    \\ \frac 1 J (u_e \frac \partial {\partial x_1} \tau(x_1) - k) & - \frac \beta J
+\end{bmatrix} \big |_{\substack{x = x_e \\ u = u_e}}
+\\ &= \begin{bmatrix}
+0 & 1
+\\ \frac 1 J (-u_e \frac {\cos \alpha \sin^2 \alpha \sin(2 x_{1e})} {[1-(\sin^2\alpha \cos^2(x_{1e}))]^2} - k) & - \frac \beta J
+\end{bmatrix}
+\approx \begin{bmatrix}
+0 & 1
+\\ -0.9470 & -0.0014
+\end{bmatrix}
+\\ \\
+B &= \begin{bmatrix}
+    \frac \partial {\partial u} f_1
+    \\ \frac \partial {\partial u} f_2
+\end{bmatrix} \big |_{\substack{x = x_e \\ u = u_e}}
+= \begin{bmatrix}
+    0
+    \\ \frac {\tau(x_{1e})} J
+\end{bmatrix} \approx \begin{bmatrix}
+    0
+    \\ 0.00184
+\end{bmatrix}
+\\ \\
+C &= \begin{bmatrix}
+    \frac \partial {\partial x_1} h & \frac \partial {\partial x_2} h
+\end{bmatrix} \big |_{\substack{x = x_e \\ u = u_e}}
+= \begin{bmatrix}
+    1 & 0
+\end{bmatrix}
+\\ \\
+D &= 0
+\end{align*}
+
+% PUNTO SECONDO %
+\newpage
+\section{Calcolo Funzione di Trasferimento}
+
+In questa sezione, andiamo a calcolare la funzione di trasferimento $G(s)$ dall'ingresso $\delta u$ all'uscita $\delta y$ mediante la seguente formula 
+
+\begin{align}\label{eq:transfer_function}
+G(s) &= C(sI-A)^{-1}B - D   \nonumber
+\\ &= \begin{bmatrix}
+    1 & 0
+\end{bmatrix}
+\begin{bmatrix}
+    \frac{s+0,0014}{s(s+0,0014)+0,9470} &
+    \frac{1}{s(s+0,0014)+0,9470} \\
+    -\frac{0,947}{s(s+0,0014)+0,9470} &
+    \frac{s}{s(s+0,0014)+0,9470}
+\end{bmatrix}
+\begin{bmatrix}
+    0 \\ 0,0018
+\end{bmatrix}-
+\begin{bmatrix}
+    0
+\end{bmatrix} \nonumber
+\\ &= \frac{0,0018}{s^2+0,0014s+0,9470} 
+\end{align}
+
+Dunque il sistema linearizzato~\eqref{eq:linearized_system} è caratterizzato dalla funzione di trasferimento~\eqref{eq:transfer_function} con $2$ poli $p_1 = -0,0007 + 0,973j$, $p_2 = -0,0007 - 0,973j$ e nessuno zero. In Figura~\ref{G_s} mostriamo il corrispondente diagramma di Bode.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figs/funzione-trasferimento.png}
+    \caption{Funzione di Trasferimento.}
+    \label{G_s}
+\end{figure}
+
+Si può notare che nel diagramma di ampiezza, la frequenza di risonanza è evidenziata da un picco a basse frequenze, tipico di una funzione di trasferimento con poli complessi coniugati. Inoltre, nel diagramma di fase, in corrispondenza della frequenza di risonanza, si nota un gradino, anch'esso caratteristico della presenza di poli complessi coniugati.
+
+% PUNTO TERZO %
+\newpage
+\section{Mappatura specifiche del regolatore}
+\label{sec:specifications}
+
+Le specifiche da soddisfare sono
+\begin{enumerate}
+    \item Errore a regime $|e_\infty|\leq e^* = 0.05$ in risposta a un gradino $\omega(t) = 2(t)$ e $d(t) = 1.2(t)$.
+    \item Per garantire una certa robustezza del sistema si deve avere un margine di fase $M_f \geq 35^\circ$.
+    \item Il sistema può accettare una sovraelongazione percentuale al massimo del $20\%: S\% \leq 20\%$.
+    \item Il tempo di assestamento alla $\epsilon \% = 5\%$ deve essere inferiore al valore fissato $T_{a,\epsilon} = 0.006s$.
+    \item Il disturbo sull'uscita $d(t)$, con una banda limitata nel range di pulsazioni $[0, 0.7]$ deve essere abbattuto di almeno $35$ dB.
+    \item Il rumore di misura $n(t)$, con una banda limitata nel range di pulsazioni $[2\cdot 10^5, 5\cdot10^6]$ deve essere abbattuto di almeno $69$ dB.
+\end{enumerate}
+
+Andiamo ad effettuare la mappatura punto per punto delle specifiche richieste:
+\begin{enumerate}
+    \item Per mantenere l'errore a regime al di sotto della soglia $e^* = 0.05$ in risposta al gradino $\omega(t) = 2(t)$ e $d(t) = 1.2(t)$ occorre avere $L(0) \geq \frac {D^* + W^*} {e^*} = 64$, che in decibel corrisponde a $L(0) \geq 36.13 \ dB$.
+    \item Per garantire la robustezza del sistema occorre avere una fase maggiore di $-145^\circ$ in corrispondenza della pulsazione critica $\omega_c$.
+    \item Per ottenere una sovraelongazione percentuale minore (o uguale) di quella richiesta occorre avere un coefficiente di smorzamento $\xi \geq \xi^* \approx 0.456$ il che risulta in $M_f \geq 45^\circ$, il quale indica che in corrispondenza della pulsazione critica dovremo avere una fase maggiore di -$135^\circ$, specifica che rispetta anche la precedente sul margine di fase.
+    \item Per avere un tempo di assestamento sufficientemente piccolo, sapendo che il nostro sistema presenta due poli complessi coniugati dominanti, vale la formula $\xi^*\omega_n \geq \frac 3 {T_{a, 5}^*}$, dunque possiamo ottenere un limite inferiore per la pulsazione critica $\omega_n \geq \frac 3 {T_{a, 5}^* \cdot \xi^*} \implies \omega_c \geq \frac {300} {T_{a, 5}^* \cdot M_f^*} \approx 1097 \ rad/s$.
+    \item Per poter abbattere il disturbo in uscita risulta necessario avere $|L(j\omega)|_{dB} \geq 35dB$ all'interno del range di pulsazioni $[0, 0.7]$, specifica già rispettata da quella per l'errore a regime, se la estendiamo per tutto l'intervallo $[0, 0.7]$. 
+    \item Per poter abbattere il rumore di misura risulta necessario avere $|L(j\omega)|_{dB} \leq -69dB$ all'interno del range di pulsazioni $[2\cdot10^5, 5\cdot10^6]$.
+\end{enumerate}
+
+Pertanto, in Figura~\ref{fig2:bode_diagram}, mostriamo il diagramma di Bode della funzione di trasferimento $G(s)$ con le zone proibite emerse dalla mappatura delle specifiche.
+
+\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figs/specifiche-progetto.png}
+    \caption{Diagramma di Bode di $G(s)$ con zone proibite.}
+    \label{fig2:bode_diagram}
+\end{figure}
+
+Osserviamo subito che il comportamento del sistema alle basse frequenze deve essere adeguato per soddisfare i requisiti di funzionamento richiesti, così come quelli relativi alla pulsazione critica e al margine di fase. Notiamo inoltre che risultano già rispettate unicamente le specifiche riguardanti il disturbo di misura.
+
+% REGOLATORE STATICO %
+\newpage
+
+\section{Sintesi del regolatore statico}
+\label{sec:static_regulator}
+
+In questa sezione progettiamo il regolatore statico $R_s(s)$ partendo dalle analisi fatte in sezione~\ref{sec:specifications}.
+
+Il regolatore statico provvederà a soddisfare le specifiche sull'errore a regime e sul disturbo in uscita, descritte nei punti 1 e 5. Abbiamo scelto di utilizzare un regolatore del tipo $R_s(s) = \mu_s \geq \mu_s^*$, dove il guadagno statico limite $\mu_s^*$ deve essere abbastanza grande da rispettare entrambe le specifiche alle quali risponde il regolatore statico, per cui risulterà $\mu_s \geq max(\mu_{s,e}^*,\mu_{s,d}^*)$, dove $\mu_{s,e}^*$ è il valore minimo per cui viene rispettata la specifica dell'errore a regime, mentre, $\mu_{s,d}^*$ è il valore minimo per il quale viene rispettata la specifica sul disturbo in uscita.
+
+\begin{align}  
+    \mu_s = max(\mu_{s,e}^*,\mu_{s,d}^*) = max(\frac {D^* + W^*} {G(0) \cdot e^*}, \frac {10^{\frac {35 \ dB} {20}}} {G(j \cdot 0.7)}) \approx max(106223, 78392) \approx 106223.
+\end{align}
+
+Dunque, definiamo la funzione estesa $G_e(s) = R_s(s)G(s)$ e, in Figura~\ref{DiagrammaRegolatoreStatico}, mostriamo il suo diagramma di Bode per verificare se le specifiche sull'errore a regime e sul disturbo in uscita vengono rispettate.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figs/regolatore-statico.png}
+    \caption{Diagramma del regolatore statico con zone proibite.}
+    \label{DiagrammaRegolatoreStatico}
+\end{figure}
+
+Da Figura~\ref{DiagrammaRegolatoreStatico}, emerge che le specifiche sull'errore a regime e sul disturbo in uscita vengono rispettate. Rimane da realizzare un regolatore dinamico che consentirà di rispettare tutte le altre specifiche, come quella sulla pulsazione critica e sul margine di fase.
+
+% REGOLATORE DINAMICO %
+\newpage
+\section{Sintesi del regolatore dinamico}
+
+In questa sezione, progettiamo il regolatore dinamico $R_d(s)$. Esso mira a rispettare le specifiche 2, 3, 4 e 6 riguardanti il margine di fase, la sovraelongazione, il tempo di assestamento e il rumore di misura.
+Dalle analisi fatte in Sezione~\ref{sec:static_regulator}, notiamo di essere nello Scenario di tipo A. Dunque, progettiamo $R_d(s)$ riccorrendo a  una rete ritardatrice:
+
+\begin{align}
+    R_d(s) = \frac{1+\tau s}{1+\alpha\tau s}
+\end{align}
+
+Dovendo scegliere la frequenza di taglio nell'intervallo $[1097, 2 \cdot 10^5]$ rad/s per rispettare la specifica sulla sovraelongazione, quella sul tempo di assestamento e quella sul rumore di misura, scegliamo $\omega_c = 2000$ rad/s, abbastanza bassa da evitare di attraversare la zona proibita per la specifica 6. Andiamo quindi a calcolare $M^*$ e $\varphi^*$ utilizzando il valore di $\omega_c$ appena scelto:
+
+\[M^* = \frac{1}{|G(j\omega_c^*)|} \approx 0,00066 \]
+\[\varphi^* = M_f^* -180^\circ + 5^\circ - \arg\{G(j\omega_c^*)\} = 50,5949 \]
+
+Ora possiamo calcolare i valori di $\tau$ e $\tau\alpha$:
+
+\begin{subequations}
+\begin{align}
+    \tau = \frac {M^* - \cos \varphi^*} {\omega_c^* \sin \varphi^*} = 42,7077
+    \\ \alpha\tau = \frac {\cos \varphi^* - \frac 1 {M^*}} {\omega_c^* \sin \varphi^*} \approx 0,0004
+\end{align}
+\end{subequations}
+
+Da notare che abbiamo aggiunto $5^\circ$ a $\varphi^*$ come margine di sicurezza.\\
+
+In Figura~\ref{RegolatoreDinamico}, mostriamo il diagramma di Bode della funzione d'anello $L(s) = R_d(s) G_e(s)$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figs/regolatore-dinamico.png}
+    \caption{Diagramma del regolatore completo con zone proibite.}
+    \label{RegolatoreDinamico}
+\end{figure}
+
+Possiamo notare che al completamento del nostro regolatore dinamico il sistema soddisfa tutte le specifiche date.
+
+% PUNTO QUARTO %
+\newpage
+\section{Test sul sistema linearizzato}
+
+In questa sezione, testiamo l'efficacia del controllore progettato sul sistema linearizzato con 
+\[w(t) = 2(t) \]
+\[d(t) = \sum^4_{k=1}0.2\sin(0.1kt)\] 
+\[n(t) = \sum^4_{k=1}0.2\sin(2\cdot10^5kt)\]
+Allo scopo di testare il sistema utilizziamo le funzioni di sensitività e sensitività complementare, calcolate come segue:
+\[S(s) = \frac{1}{1+L(s)}\]
+\[F(s) = \frac{L(s)}{1+L(s)}\]
+In Figura~\ref{RispostaLinearizzataAlGradino}, mostriamo la risposta al gradino descritto in precedenza del sistema linearizzato in presenza di disturbo e rumore.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figs/risposta-gradino-linearizzato.png}
+    \caption{Risposta al gradino del sistema linearizzato.}
+    \label{RispostaLinearizzataAlGradino}
+\end{figure}
+
+Si può notare subito il fatto che la risposta è perfettamente conforme con quello che ci si aspettava e i vincoli sulla sovraelongazione e sul tempo di assestamento non vengono oltrepassati.\\
+
+Di seguito sono riportate le singole risposte del sistema linearizzato a fronte del disturbo in uscita e del rumore nella misurazione. Rispettivamente in Figura~\ref{RispostaDisturboUscita} e Figura~\ref{RispostaRumoreMisura}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{figs/risposta-disturbo-uscita.png}
+    \caption{Risposta del sistema al disturbo in uscita.}
+    \label{RispostaDisturboUscita}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{figs/risposta-rumore-misura.png}
+    \caption{Risposta del sistema al rumore di misura.}
+    \label{RispostaRumoreMisura}
+\end{figure}
+
+Notiamo che sia per il disturbo in uscita che per il rumore di misura, questi vengono attenuati significativamente, consentendo alle componenti d'uscita $y_d(t)$ e $y_n(t)$ di rimanere stabili e vicine allo zero per disturbi e rumori con frequenze appartenenti agli intervalli da attenuare $[0, 0.7]$ e $[2 \cdot 10^5, 5 \cdot 10^6]$.
+
+% PUNTO QUINTO %
+\newpage
+\section{Test sul sistema non lineare}
+
+In questa sezione, testiamo l'efficacia del controllore progettato sul modello non lineare con
+\[w(t) = 2(t) \]
+\[d(t) = \sum^4_{k=1}0.2\sin(0.1kt)\] 
+\[n(t) = \sum^4_{k=1}0.2\sin(2\cdot10^5kt)\]
+
+In Figura~\ref{SchemaBlocchiNonLineare}, mostriamo lo schema a blocchi del sistema in anello chiuso.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{figs/schema-blocchi-non-lineare.png}
+    \caption{Schema a blocchi del sistema non lineare in anello chiuso.}
+    \label{SchemaBlocchiNonLineare}
+\end{figure}
+
+I blocchi principali che caratterizzano lo schema sono i seguenti:
+\begin{itemize}
+    \item Ingresso $\omega(t)$ che genera un gradino di altezza $2$ da rispettare per l'uscita del sistema.
+    \item Regolatore RR progettato in precedenza che, prendendo in ingresso l'errore $e(t)$ contaminato dal rumore di misura $n(t)$, restituisce il segnale $\Delta u(t)$, che sommato all'ingresso di equilibrio $u_e$ fornisce il valore $u(t)$ da dare in input all'equazione di stato.
+    \item Equazione di stato non lineare $f(x, u)$ definita all'inizio del progetto.
+    \item Integratore che consente di ottenere $x$ da $\dot x$. Tale valore viene utilizzato sia come input per l'equazione di uscita che retroazionato al fine di essere utilizzato come ingresso dell'equazione di stato. Inoltre l’integratore permette di stabilire i valori iniziali dello stato, scelti come
+    $\begin{bmatrix}
+        x_{1e}
+        \\
+        x_{2e}
+    \end{bmatrix}$.
+    \item Un moltiplicatore funge da equazione di uscita in quanto moltiplica la matrice $C$ allo stato $x(t)$ in uscita dall'equazione di stato. Ricordiamo infatti che $h(x, u) = \begin{bmatrix}
+        1 & 0
+    \end{bmatrix} x(t) + 0 \cdot u(t)$.
+    \item L'intero ciclo che retroaziona l'uscita $y(t) + d(t)$, permette di ridurre dinamicamente l'errore $e(t)$ e stabilizzare il sistema sul nuovo valore dato dall'ingresso.
+\end{itemize}
+
+Di seguito, in Figura~\ref{RispostaSistemaNonLineare}, è riportata la risposta del sistema a fronte dell'ingresso \[w(t) = 2(t)\]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{figs/risposta-sistema-non-lineare.png}
+    \caption{Risposta del sistema non linearizzato.}
+    \label{RispostaSistemaNonLineare}
+\end{figure}
+
+Si nota che inizialmente il sistema è stabile sul valore di equilibrio, e che all'applicazione del gradino al secondo $t = 0.006 \ s$ vi è un transitorio iniziale, in cui si osserva una rapida crescita dell'uscita seguita da un'oscillazione.\\
+Notiamo inoltre una sovraelongazione dell'uscita rispetto al valore di regime, la quale però non supera il valore massimo del $20\%$ dettato dalla specifica.\\
+Infine, dopo l'oscillazione transitoria, vediamo come l'uscita converge rapidamente verso il valore di regime in modo da rispettare la specifica sul tempo di assestamento.
+
+\section{Conclusioni}
+
+Lo scopo del progetto era quello di realizzare un regolatore adatto ad un sistema composto da una tavola rotante motorizzata dove l’accoppiamento tra motore e tavola avviene tramite un giunto cardanico.\\
+Siamo partiti linearizzando il sistema attorno al punto di equilibrio per ridurne la complessità e facilitare la progettazione.\\
+Una volta ricavata la funzione di trasferimento del sistema linearizzato siamo passati alla realizzazione del regolatore il quale, viste le specifiche da rispettare, abbiamo deciso di comporlo da una parte statica $R_s(s)$ e da una dinamica $R_d(s)$.\\
+Una volta conclusa tale progettazione tramite la verifica della conformità alle specifiche attraverso la mappatura dei vincoli, il sistema è stato messo alla prova con delle simulazioni perturbate da disturbi e rumori. Queste ci hanno dimostrato il corretto funzionamento del nostro sistema in anello chiuso, consentendoci così di concludere il progetto con la sicurezza di aver realizzato un regolatore capace di garantire prestazioni in linea con le richieste.\\
+
+\end{document}
