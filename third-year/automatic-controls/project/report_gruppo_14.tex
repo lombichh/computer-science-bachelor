@@ -387,7 +387,7 @@ Da Figura~\ref{DiagrammaRegolatoreStatico}, emerge che le specifiche sull'errore
 \section{Sintesi del regolatore dinamico}
 
 In questa sezione, progettiamo il regolatore dinamico $R_d(s)$. Esso mira a rispettare le specifiche 2, 3, 4 e 6 riguardanti il margine di fase, la sovraelongazione, il tempo di assestamento e il rumore di misura.
-Dalle analisi fatte in Sezione~\ref{sec:static_regulator}, notiamo di essere nello Scenario di tipo A. Dunque, progettiamo $R_d(s)$ riccorrendo a  una rete ritardatrice:
+Dalle analisi fatte in Sezione~\ref{sec:static_regulator}, notiamo di essere nello Scenario di tipo B. Dunque, progettiamo $R_d(s)$ riccorrendo a  una rete anticipatrice:
 
 \begin{align}
     R_d(s) = \frac{1+\tau s}{1+\alpha\tau s}

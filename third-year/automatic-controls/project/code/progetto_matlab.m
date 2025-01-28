@@ -223,7 +223,7 @@ legend(legend_args);
 
 %% Test del sistema linearizzato
 % Funzione di sensitività complementare
-FF = LL/(1+LL);
+FF = LL/(1+LL)
 % Funzione di sensitività
 SS = 1/(1+LL);
 
