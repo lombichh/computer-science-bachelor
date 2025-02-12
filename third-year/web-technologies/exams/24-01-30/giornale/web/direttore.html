@@ -1,0 +1,21 @@
+<DOCTYPE! html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Giornale</title>
+		<link type="text/css" href="styles/default.css" rel="stylesheet"></link>
+		
+		<script type="text/javascript" src="scripts/utils.js"></script>
+		<script type="text/javascript" src="scripts/direttoreRequest.js"></script>
+	</head>
+	<body>
+		<jsp:useBean id="currentUser" class="beans.User" scope="session"/>
+	
+		<h1>Direttore</h1>
+		
+		<label>Giornalista: <input id="giornalista" type="text" name="giornalista" value=""/><br/></label>
+		
+		<button onclick="giornalistaRequest('giornaleServlet', myGetElementById('giornalista').value)">Aggiungi notizia</button>
+	
+	</body>
+</html>

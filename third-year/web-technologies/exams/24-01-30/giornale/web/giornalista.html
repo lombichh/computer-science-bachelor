@@ -1,0 +1,22 @@
+<DOCTYPE! html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Giornale</title>
+		<link type="text/css" href="styles/default.css" rel="stylesheet"></link>
+		
+		<script type="text/javascript" src="scripts/utils.js"></script>
+		<script type="text/javascript" src="scripts/giornalistaRequest.js"></script>
+	</head>
+	<body>
+		<jsp:useBean id="currentUser" class="beans.User" scope="session"/>
+	
+		<h1>Giornalista</h1>
+		
+		<input type="hidden" id="giornalista" name="giornalista" value="<%= currentUser.getUsername() %>"<br/>
+		<label>Notizia: <input type="text" name="notizia" value=""/><br/></label>
+		
+		<button onclick="giornalistaRequest('giornaleServlet', '<%= currentUser.getUsername() %>', myGetElementById('notizia').value)">Aggiungi notizia</button>
+	
+	</body>
+</html>

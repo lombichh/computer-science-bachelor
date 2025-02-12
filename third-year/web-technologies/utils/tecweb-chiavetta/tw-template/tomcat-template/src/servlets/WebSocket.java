@@ -44,8 +44,7 @@ public class WebSocket {
 	public void handleMessage(Session session, String message) throws IOException {
 		// messaggi di tipo diverso nella servlet
 		session.getUserProperties().get("nameProperty"); // oggetto proprietà di sessione (oppure tramite variabile di istanza, synchronized)
-		session.getUserProperties().put("nameProperty", "value"); // oggetto proprietà di sessione (oppure tramite variabile di istanza, synchronized)
-		
+		session.getUserProperties().put("nameProperty", "value"); // oggetto proprietà di sessione (oppure tramite variabile di istanza, synchronized)		
 		
 		String resultMessage;
 		

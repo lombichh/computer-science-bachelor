@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Corsa</title>
+		<link type="text/css" href="styles/default.css" rel="stylesheet"></link>
+		
+		<script src="./react-libs/react.js"></script>
+		<script src="./react-libs/react_dom.js"></script>
+		<script src="./react-libs/babel.js"></script>
+	</head>
+	<body>
+		<div id="root"></div>
+		
+		<script src="./react-components/App.js" type="text/babel"></script>
+		<script src="./react-components/Configurazione.js" type="text/babel"></script>
+		<script src="./react-components/Pista.js" type="text/babel"></script>
+		<script src="./react-components/Classifica.js" type="text/babel"></script>
+		<script type="text/babel">
+			ReactDOM.render(
+				<React.StrictMode>
+					<App/>
+				</React.StrictMode>, 
+				document.getElementById("root")
+			);
+		</script>
+	
+	</body>
+</html>
+

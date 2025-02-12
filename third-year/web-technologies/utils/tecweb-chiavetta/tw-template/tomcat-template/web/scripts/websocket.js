@@ -1,4 +1,4 @@
-const webSocket = new WebSocket("ws://localhost:8080/tw-template/actions");
+const webSocket = new WebSocket("ws://localhost:8080/tomcat-template/actions");
 
 webSocket.onmessage = function(event) {
 	const myBean = JSON.parse(event.data);
