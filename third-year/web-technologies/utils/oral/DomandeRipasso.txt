@@ -1,0 +1,426 @@
+
+
+DOMANDE (42 è la risposta alla domanda fondamentale, per il resto...)
+
+1) URI e URL
+
+*cosa significa URI == Unifed Resource Identifier, un modo standard per identificare le risorse in rete
+*quali sono le due specializzazioni delle URI == URL (che indica la locazione della risorsa), URN (che indica una identificazione della risorsa)
+*porta standard del protocollo http == è la porta 80, mentre per il protocollo https è la porta 443
+*differenza tra URL e URN == URL indica la locazione della risorsa, quindi un metodo per accederci, mentre URN è un modo per indentificare la risorsa senza fare appello alla sua locazione
+*come viene definita la sintassi generale di una URI == schema, autorità, percorso, query e frammento
+*Quali componenti compongono un URL con schema HTTP-like? == schema http, autorità (credenziali, host, porta), un percorso, una query e un frammento opzionali
+
+
+2) Protocollo HTTP 
+
+*Cosa significa l'acronimo HTTP? == HyperText Transfer Protocol
+*Quali sono le due versioni principali di HTTP discusse nelle slide? == HTTP v1 e v1.1 + v1.1 con pipelining
+*Che tipo di protocollo è HTTP in termini di gestione dello stato? == è un protocollo stateless
+*Su quale porta standard lavora tipicamente il server HTTP? == 80
+*Qual è il metodo HTTP più comunemente usato per richiedere una risorsa da un server? == il metodo GET è quello più usato
+*Che cosa contiene un messaggio di risposta HTTP? == un messaggio di risposta è costituito da due parti un header e un body
+*Cosa rappresentano i codici di stato HTTP che iniziano con '2'? == rappresentano che la richiesta è avvenuta con successo 
+
+
+*Qual è la differenza principale tra HTTP 1.0 e HTTP 1.1? == in HTTP 1 per ogni request segue una response e si chiude la comunicazione
+*Come funziona il meccanismo di pipelining in HTTP 1.1? == il meccanismo di pipelining permette uno scambio di messaggi in modo concorrente nella stessa connessione prima ancora di ricevere qualsiasi risposta 
+*Che cos'è il multiplexing in HTTP/2?
+*Quali sono i principali miglioramenti introdotti con HTTP/2 rispetto alle versioni precedenti?
+*Come viene gestita la sicurezza nelle comunicazioni HTTP?
+*Qual è lo scopo dei cookie in HTTP? lo scopo dei cookie è quello di conservare uno "stato" in un protocollo che è stateless
+*Come funziona l'autenticazione HTTP Basic
+
+*Analizza i vantaggi e i limiti dell'utilizzo di messaggi HTTP in formato ASCII.
+*Quali strategie possono essere implementate per gestire la scalabilità di server HTTP ad altissima richiesta?
+*Discussione sul ruolo dei proxy, gateway e tunnel nel contesto del protocollo HTTP.
+*Come viene implementata la cache in HTTP e quali benefici apporta?
+*Quali sono le implicazioni di sicurezza associate all'uso di SSL/TLS in HTTPS?
+*In che modo il protocollo HTTP si adatta a modelli di esecuzione server diversi (sequenziale, concorrente, parallelo)?
+*Come vengono gestite le problematiche di Freshness, Validation e Invalidation nelle cache HTTP?
+
+
+3) HTML
+Domande Facili
+Cosa significa l'acronimo HTML?
+Qual è il ruolo di un tag in HTML?
+Che cosa si intende per elementi "block-level" e "inline" in HTML?
+Come si definisce un paragrafo in HTML?
+Cosa fa il tag <br>?
+Quali attributi si possono usare con il tag <img> per specificare dimensioni e testo alternativo?
+Come si crea un collegamento ipertestuale in HTML?
+Domande Medie
+Qual è la differenza tra i tag <strong> e <b>, e tra <em> e <i>?
+Come si inserisce un'immagine in una pagina web usando HTML?
+Cosa sono i tipi MIME e come vengono utilizzati in HTML?
+Come si struttura un documento HTML di base (con esempi di header e body)?
+Qual è lo scopo del tag <meta> e quali informazioni può contenere?
+Come funzionano le liste in HTML e quali tipi esistono?
+Cosa sono le tabelle in HTML e come si creano?
+Domande Difficili
+Come si implementa un form in HTML e quali tipi di input può contenere?
+Quali sono le principali differenze tra HTML 4.01 e HTML5?
+Come funzionano le ancore in HTML e come si utilizzano per creare link interni?
+Qual è il ruolo e l'importanza degli attributi alt e title in un elemento <img>?
+In che modo l'uso di CSS e JavaScript interagisce con l'HTML in una pagina web?
+Quali sono le best practices per l'uso dei form in HTML in termini di accessibilità e usabilità?
+Come si utilizzano gli iframe in HTML e quali implicazioni hanno per la sicurezza e l'usabilità?
+
+4)CSS
+Domande Facili
+Cosa significa l'acronimo CSS?
+Qual è lo scopo principale dei CSS?
+Cosa si intende con la cascata in CSS?
+Come si collega un foglio di stile esterno a un documento HTML?
+Qual è la differenza tra padding e margin in CSS?
+Come si definisce il colore di sfondo di un elemento?
+Che cosa fa la proprietà display in CSS?
+Cosa si intende per selettori in CSS?
+Come si applica uno stile a tutti gli elementi di un tipo specifico (ad esempio, tutti i paragrafi)?
+Cosa fa la proprietà float in CSS?
+
+Domande Medie
+Come si possono combinare i selettori per applicare uno stile specifico?
+Qual è il ruolo della proprietà position in CSS?
+Come si crea una regola CSS che applica stili solo quando l'utente passa il mouse sopra un elemento?
+Qual è la differenza tra em e rem come unità di misura in CSS?
+Come si utilizza il selettore di attributo in CSS?
+Cosa sono i media queries e come vengono utilizzati?
+Come si stabilisce la priorità tra più regole CSS che si applicano allo stesso elemento?
+Qual è il concetto di ereditarietà in CSS e come funziona?
+Come si utilizzano le variabili in CSS?
+Cosa significa il concetto di box model in CSS?
+
+Domande Difficili
+Come si gestisce la compatibilità tra diversi browser quando si utilizzano i CSS?
+Quali sono le tecniche avanzate per creare layout complessi con CSS (ad esempio, Flexbox e Grid)?
+Come si implementa un tema scuro/light con CSS?
+Quali sono le implicazioni delle unità di misura relative (ad esempio, vw e vh) nel responsive design?
+Come si ottimizzano le prestazioni di caricamento delle pagine con i CSS?
+Qual è l'approccio migliore per gestire i font e le icone in un progetto web?
+Come si utilizza CSS per migliorare l'accessibilità di un sito web?
+Quali sono le best practices per organizzare e mantenere i fogli di stile su progetti di grandi dimensioni?
+Come si integra CSS con JavaScript per animazioni dinamiche?
+Cosa sono i CSS preprocessors e quali vantaggi offrono?
+
+5)Web Dinamico
+Facili
+Che cosa caratterizza un sito web statico?
+I siti web statici sono costituiti da pagine HTML costruite a priori e immutabili in risposta all'interazione dell'utente.
+
+Cosa significa CGI?
+CGI sta per Common Gateway Interface, uno standard per interfacciare applicazioni esterne con server web.
+
+Qual è la funzione principale di un documento HTML in un sito web statico?
+Presentare contenuti fissi agli utenti che navigano il sito.
+
+Perché il modello web statico è considerato semplice ed efficiente?
+Perché le pagine web sono pre-costruite e non richiedono elaborazione lato server in risposta alle richieste dell'utente.
+
+Cosa permette di fare un form HTML con metodo GET in un sito web dinamico?
+Inviare informazioni inserite dall'utente a un server web per essere processate dinamicamente.
+
+Come viene passato il contenuto di un form HTML al programma CGI usando il metodo GET?
+Attraverso la URL, includendo i dati del form come stringa di query.
+
+Che cos'è un programma CGI?
+Un programma che viene eseguito dal server web in risposta a una richiesta dell'utente, per generare contenuti web dinamici.
+
+Quali sono i limiti del metodo GET per inviare dati a un programma CGI?
+La lunghezza dei dati che possono essere inviati è limitata (ad esempio, 256 caratteri su sistemi UNIX).
+
+Come si può superare il limite di lunghezza dei dati inviati con il metodo GET?
+Utilizzando il metodo POST, che invia i dati tramite l'header HTTP anziché nella URL.
+
+Qual è il vantaggio principale dell'utilizzo di CGI in un sito web?
+Permette di generare contenuti web dinamicamente in base alle richieste degli utenti.
+
+Medie
+Come funziona il modello di interazione CGI tra client e server?
+Il client invia una richiesta HTTP al server per eseguire un programma CGI, il quale elabora la richiesta e restituisce il risultato al server, che poi lo invia al client.
+
+Quali sono i modi in cui i programmi CGI possono comunicare con il server web?
+Attraverso variabili di ambiente del sistema operativo, parametri sulla linea di comandi, standard input, e standard output.
+
+Come si può accedere ai dati inviati con il metodo POST in un programma CGI scritto in C?
+Aprendo un file su stdin e leggendo i campi del POST con fgetc().
+
+Perché è necessaria la configurazione del web server per l'esecuzione dei programmi CGI?
+Per indicare al server dove trovare i programmi CGI e che l'URL richiesto corrisponde all'esecuzione di un programma e non al recupero di un documento statico.
+
+Come vengono gestite le variabili di ambiente in un programma CGI?
+Il web server imposta variabili di sistema corrispondenti agli header HTTP prima di chiamare il programma CGI.
+
+Come viene generato l'output di un programma CGI?
+Il programma elabora i dati in ingresso ed emette un output per il client usando, ad esempio, la funzione printf() in C per passare i dati al server.
+
+Cosa permette di fare la separazione degli aspetti di contenuto da quelli di presentazione in un sito web dinamico?
+Facilita la gestione del sito, permettendo ad esempio l'aggiornamento automatico degli indici e la modifica agevole del layout delle pagine.
+
+Come può essere implementata la ricerca in un sito web dinamico?
+Utilizzando un programma CGI che elabora la richiesta di ricerca, cerca nel database le pagine corrispondenti e genera una pagina con i risultati.
+
+Quali sono le principali differenze tra le pagine webstatiche e quelle dinamiche?
+Le pagine statiche sono fisse e non cambiano in risposta all'utente, mentre quelle dinamiche possono adattarsi e cambiare contenuto dinamicamente.
+
+Qual è l'importanza dell'uso di database in siti web dinamici?
+Permette di gestire e organizzare grandi quantità di dati che possono essere facilmente accessibili e modificati dinamicamente attraverso il sito web.
+
+Difficili
+Come vengono gestiti i parametri di input in un programma CGI scritto in linguaggi diversi da C, come PHP o Perl?
+Dipende dal linguaggio: PHP accede ai dati tramite variabili superglobali ($_GET, $_POST), mentre Perl può usare moduli come CGI per ottenere i dati.
+
+Quali sono le implicazioni di sicurezza legate all'uso di CGI e come possono essere mitigate?
+L'esecuzione di programmi CGI può esporre a vulnerabilità se non gestiti correttamente, richiedendo misure come la validazione degli input e l'uso di pratiche di programmazione sicura.
+
+Come funziona il meccanismo di routing delle richieste CGI all'interno del server web?
+Il server web utilizza il percorso specificato nell'URL (ad esempio, /cgi-bin/) per determinare che la richiesta deve essere passata a un programma CGI.
+
+In che modo le tecniche di caching influenzano le prestazioni di siti web dinamici?
+Il caching può migliorare significativamente le prestazioni memorizzando contenuti frequentemente accessibili, ma deve essere gestito con attenzione per evitare di servire dati obsoleti.
+
+Quali sono le sfide associate alla gestione dello stato in applicazioni web dinamiche e come vengono affrontate?
+La gestione dello stato in applicazioni stateless come il web richiede meccanismi come cookie, sessioni, o storage lato client per tracciare lo stato attraverso richieste multiple.
+
+Quali strategie possono essere utilizzate per bilanciare il carico in un'architettura web dinamica?
+Tecniche come il load balancing hardware o software, la distribuzione geografica dei server, e l'uso di content delivery networks (CDN).
+
+Come viene implementata la persistenza dei dati in applicazioni web dinamiche che utilizzano CGI per interagire con database?
+I programmi CGI si connettono a database attraverso API specifiche del linguaggio di programmazione o mediante chiamate a interfaccie di database standard come ODBC o JDBC.
+
+Quali sono le considerazioni per la scalabilità di applicazioni web dinamiche?
+La scalabilità richiede l'ottimizzazione del codice, l'efficiente gestione delle risorse, la capacità di espandere l'infrastruttura (hardware e software) e l'uso di tecniche di caching e load balancing.
+
+Come l'uso di Application Server modifica l'architettura e la gestione di un sito web dinamico?
+Gli Application Server forniscono un ambiente di esecuzione gestito per applicazioni web, offrendo servizi come la gestione delle transazioni, la sicurezza, e l'integrazione con sistemi esterni, facilitando lo sviluppo e la manutenzione.
+
+Quali sono le implicazioni di utilizzare AJAX in un sito web dinamico per l'interazione con CGI?
+L'uso di AJAX permette una comunicazione asincrona con il server, migliorando l'esperienza utente con aggiornamenti della pagina più fluidi e senza ricaricamenti completi, ma richiede una gestione attenta degli stati e della sicurezza.
+
+6) Servlet
+Facili
+Cosa fa una Servlet in Java?
+Cosa significa HTTPServlet?
+Come si invia una risposta HTML da una Servlet?
+Qual è lo scopo del metodo doGet in una Servlet?
+Come si può recuperare un parametro dalla richiesta in una Servlet?
+Medie
+Cosa rappresenta l'interfaccia ServletConfig?
+Come si può gestire una richiesta POST in una Servlet?
+Quali sono i passaggi per il deployment di una Servlet?
+In che modo si può ridirezionare una richiesta da una Servlet a un'altra risorsa?
+Come si memorizzano e si accedono agli attributi di sessione in una Servlet?
+Difficili
+Come si gestisce la concorrenza in una Servlet?
+Qual è il ciclo di vita di una Servlet e come vengono gestiti i suoi stati?
+Come si può implementare il modello Single-Threaded in una Servlet?
+Qual è la differenza tra forward e redirect in una Servlet?
+Come si implementa l'URL rewriting per la gestione della sessione in una Servlet?
+
+7) JSP 
+Facili
+Cosa sono le Java Server Pages (JSP)?
+Qual è la funzione principale delle JSP nel modello di sviluppo web?
+Come si inserisce un frammento di codice Java all'interno di una pagina JSP?
+Che cosa fa il tag <jsp:useBean>?
+Cosa si intende per "tag library" in JSP?
+Come si può impostare il tipo di contenuto di una risposta in una JSP?
+Qual è lo scopo del tag <jsp:setProperty>?
+In che modo una JSP può includere il contenuto di un'altra pagina?
+Come si gestisce un errore in una JSP?
+Cosa significa il termine "scriptlet" in contesto JSP?
+
+Medie
+Cosa succede quando si accede a una JSP per la prima volta?
+Qual è il ciclo di vita di una JSP?
+Come funziona la conversione di una JSP in una servlet?
+Che differenze ci sono tra le direttive <jsp:include> e <jsp:forward>?
+Come si utilizza un JavaBean in una JSP?
+Quali sono gli oggetti impliciti disponibili in una JSP?
+In quali modi si può gestire la sessione in una JSP?
+Come si possono gestire le proprietà dei JavaBeans usando JSP?
+Qual è il ruolo della direttiva <jsp:plugin>?
+Che cosa si intende per "modello MVC" in contesto di applicazioni web che utilizzano JSP?
+
+Difficili
+Come si implementa la personalizzazione del contenuto basato sulle informazioni di sessione in una JSP?
+Come si realizza un tag custom in JSP e quale classe Java si estende per farlo?
+Quali sono le considerazioni da fare per la gestione della concorrenza in applicazioni web che utilizzano JSP?
+Come si configura un filtro di sicurezza utilizzando JSP?
+Quali strategie si possono adottare per ottimizzare le prestazioni di una applicazione web che utilizza JSP?
+Come si gestisce l'internazionalizzazione in una applicazione JSP?
+Qual è il processo per la gestione degli errori a livello di applicazione in JSP?
+Come si integra una JSP con servizi RESTful?
+Quali sono le best practices per garantire la sicurezza delle applicazioni web che utilizzano JSP?
+Come si gestisce il caching a livello di applicazione in un contesto che utilizza JSP?
+
+8)Javascript
+
+Facili
+Che cos'è JavaScript?
+In quale anno JavaScript è diventato uno standard ECMA?
+JavaScript è interpretato o compilato?
+Come si inserisce uno script JavaScript in una pagina HTML?
+Qual è la differenza tra JavaScript e Java?
+Come si dichiara una variabile in JavaScript?
+Cosa fa l'istruzione alert("Hello World!"); in JavaScript?
+Qual è il valore speciale usato in JavaScript per indicare l'assenza di un valore?
+Che tipo di dati può contenere un array in JavaScript?
+Come si crea un oggetto in JavaScript?
+Medie
+Qual è la differenza tra == e === in JavaScript?
+Come si accede agli elementi di un form in JavaScript?
+Che cosa sono gli eventi in JavaScript e come si gestiscono?
+Quali proprietà dell'oggetto navigator si possono utilizzare per determinare il browser dell'utente?
+Come si può rilevare la dimensione dello schermo con JavaScript?
+Che cos'è il Document Object Model (DOM)?
+Quali metodi si possono utilizzare per manipolare il DOM?
+Come si può validare un form utilizzando JavaScript?
+Qual è la funzione dell'operatore delete in JavaScript?
+Come si definisce una funzione in JavaScript e come si può assegnare a una variabile?
+Difficili
+Quali sono le implicazioni dell'essere JavaScript un linguaggio debolmente tipizzato?
+Come si implementano le espressioni regolari in JavaScript?
+Che cosa sono i tipi valore e i tipi riferimento in JavaScript?
+Come si gestisce la concorrenza in JavaScript dato che è single-threaded?
+Quali sono i metodi per l'oggetto String e come si comportano le stringhe come oggetti?
+Come si creano e si utilizzano i costruttori per definire "classi" in JavaScript?
+In che modo JavaScript permette la creazione di proprietà e metodi statici?
+Quali sono le best practices per l'uso di JavaScript in pagine HTML per garantire la compatibilità tra browser?
+Come si possono gestire scenari in cui JavaScript è disabilitato nel browser dell'utente?
+Quali sono le differenze principali tra JavaScript puro e JQuery, e quali vantaggi offre JQuery?
+
+9) AJAX
+Facili
+Cosa significa AJAX?
+Quali tecnologie compongono AJAX?
+A cosa serve l'oggetto XMLHttpRequest in AJAX?
+Come si invia una richiesta GET usando AJAX?
+Cosa succede quando cambia il readyState di una richiesta AJAX?
+Medie
+Come si differenziano le richieste GET e POST in AJAX?
+Qual è il ruolo della funzione di callback in una richiesta AJAX?
+Come si gestiscono i dati ricevuti dal server in formato XML con AJAX?
+Cosa sono i metodi getResponseHeader() e getAllResponseHeaders() in XMLHttpRequest?
+Come si verifica il successo di una richiesta AJAX attraverso la proprietà status?
+Difficili
+Quali strategie si possono adottare per migliorare l'interazione utente nelle applicazioni AJAX?
+Come si gestisce la compatibilità tra diversi browser per l'oggetto XMLHttpRequest?
+In che modo JSON migliora l'efficienza della comunicazione in AJAX rispetto a XML?
+Come si converte una stringa JSON in un oggetto JavaScript?
+Quali sono i vantaggi e le sfide nello sviluppo di applicazioni Single Page Application (SPA) utilizzando AJAX?
+
+10) React 
+Facili
+Che cos'è React.js?
+In quale anno è stato sviluppato React.js?
+React.js è principalmente uno strumento per lo sviluppo front-end o back-end?
+Cosa significa SPA in contesto React.js?
+Che cosa è il Virtual DOM in React.js?
+Medie
+Cosa si intende per componenti in React.js?
+Come si crea un componente funzionale in React.js?
+Qual è la differenza tra state e props in React.js?
+Come si gestisce l'input di un form in React.js?
+Come si implementa un evento di click in un componente React.js?
+Difficili
+Cosa si intende per diffing nel contesto del Virtual DOM?
+Come si utilizza il ciclo di vita di un componente in React.js?
+Qual è la differenza tra un componente di classe e un componente funzionale in React.js, in termini di gestione dello stato?
+Come si implementa un'interazione asincrona con l'API server in React.js?
+Quali sono le best practices per ottimizzare le prestazioni di un'applicazione React.js?
+
+
+11) Componenti
+Facili
+Cosa significa MVC nel contesto delle applicazioni web?
+Che cos'è un Servlet nel modello Java EE?
+Cosa rappresenta il livello Model in un'applicazione MVC?
+In che modo il pattern MVC contribuisce alla manutenibilità del software?
+Cosa sono gli EJB (Enterprise JavaBeans) nel contesto Java EE?
+Qual è la differenza tra un Session Bean e un Entity Bean?
+Perché si utilizza JPA (Java Persistence API) nelle applicazioni Java EE?
+Cosa si intende per dependency injection in Spring?
+Che ruolo ha il container in un'applicazione Spring?
+Cosa significa AOP (Aspect-Oriented Programming) e come viene utilizzato in Spring?
+Medie
+Come funziona il binding dei dati in una applicazione MVC implementata con Spring?
+Qual è il vantaggio dell'utilizzo di Spring MVC rispetto al modello MVC standard?
+In che modo Spring facilita l'integrazione con altre tecnologie di persistenza come Hibernate?
+Cosa sono i Spring Profiles e come vengono utilizzati?
+Come si gestiscono le transazioni in una applicazione Spring?
+Quali sono le differenze tra @Controller e @RestController in Spring MVC?
+Che cosa si intende per Spring Boot e come semplifica lo sviluppo di applicazioni Spring?
+Come funziona il meccanismo di autowiring di Spring?
+In che modo Spring Security implementa l'autenticazione e l'autorizzazione?
+Cosa sono i Microservizi e come Spring Boot facilita il loro sviluppo?
+Difficili
+Come si implementa un gestore di eccezioni globale in Spring MVC?
+Qual è il ruolo dei Gateway in un'architettura basata su microservizi con Spring Cloud?
+Come si realizza la comunicazione asincrona tra microservizi utilizzando Spring Cloud Stream?
+In che modo si possono gestire configurazioni esterne in un'applicazione Spring Cloud Config?
+Come si implementa il circuit breaker pattern in un microservizio con Spring Cloud Hystrix?
+Quali sono le strategie per la gestione delle sessioni in un'applicazione distribuita con Spring Session?
+Come si utilizza Spring Data per astrarre l'accesso ai dati?
+Qual è l'approccio raccomandato per la gestione delle dipendenze tra componenti in un'applicazione complessa con Spring?
+Come si ottimizzano le prestazioni di una applicazione Spring con il caching?
+Quali sono le migliori pratiche per garantire la sicurezza delle API REST con Spring Security?
+
+12) Websocket
+Facili
+Cosa sono Java Server Faces (JSF) e qual è il loro ruolo nello sviluppo di applicazioni web?
+Che cos'è un Managed Bean in JSF e come viene utilizzato?
+Qual è la funzione del FacesServlet in un'applicazione JSF?
+Come si può definire un simple backing bean con JSF?
+Qual è lo scopo dell'uso di Expression Language (EL) in JSF?
+Cosa significa il termine "templating" in JSF e come viene implementato?
+Quali sono i quattro possibili scope per un Managed Bean in JSF?
+Come si configura un Managed Bean nel file faces-config.xml o tramite annotazioni?
+Medie
+Come funziona il ciclo di vita di una richiesta JSF dalla creazione alla risposta?
+Qual è la differenza tra i tag <ui:insert>, <ui:component>, <ui:define>, <ui:include>, e <ui:param> in JSF?
+Come si gestisce la navigazione tra le pagine in un'applicazione JSF?
+Quali sono i vantaggi dell'uso dei template in JSF per la gestione del layout delle pagine?
+Come si realizza una validazione dei dati di input in JSF?
+In che modo JSF facilita l'internazionalizzazione delle applicazioni web?
+Cosa sono i Validatori in JSF e come si utilizzano?
+Qual è il ruolo dei converter in JSF?
+Difficili
+Come si implementa una comunicazione bidirezionale real-time con WebSocket in un'applicazione web?
+Quali sono le principali differenze e limitazioni tra il modello di comunicazione HTTP tradizionale e WebSocket?
+Come si stabilisce una connessione WebSocket tra il client e il server in Java EE?
+Qual è il processo di encoding e decoding dei messaggi in una comunicazione WebSocket in Java EE?
+Come si gestisce lo stato del cliente e la sessione in una applicazione WebSocket?
+Quali sono i metodi e gli eventi principali dell'API WebSocket in JavaScript per la gestione delle comunicazioni?
+Come si implementa una chat applicativa utilizzando WebSocket sia lato server che lato client?
+Come si integra WebSocket con framework come Spring o librerie come React.js per lo sviluppo di applicazioni web moderne?
+
+13) Node.js
+
+Facili
+Che cos'è Node.js e quale problema cerca di risolvere?
+Cosa significa che Node.js utilizza I/O non-bloccante?
+Qual è il motore JavaScript utilizzato da Node.js?
+In che modo Node.js gestisce le operazioni asincrone?
+Cosa si intende per "event loop" in Node.js?
+Qual è il ruolo del modulo http in Node.js?
+Come si crea un semplice server HTTP in Node.js?
+Che cos'è npm e a cosa serve?
+Medie
+Quali sono i vantaggi dell'utilizzo di Node.js per applicazioni web rispetto ad altri framework server-side?
+Come si utilizzano i callback in Node.js per gestire la concorrenza?
+In che modo Node.js supporta la programmazione orientata agli eventi?
+Quali sono alcune delle criticità nell'utilizzo di Node.js per applicazioni con task CPU-intensive?
+Come si legge un file in modo asincrono con Node.js?
+Cosa sono i moduli in Node.js e come si utilizzano?
+Che cos'è il pattern Listener/Emitter in Node.js e come si applica?
+Qual è la differenza tra stream leggibili e scrivibili in Node.js?
+Difficili
+Come si implementa un server TCP con Node.js?
+Quali strategie si possono adottare in Node.js per gestire operazioni che richiedono molto tempo CPU senza bloccare l'event loop?
+Come si utilizzano gli stream per elaborare dati in modo efficiente in Node.js?
+Quali sono le sfide associate alla gestione dello stato in un'applicazione Node.js data la sua natura asincrona e basata su eventi?
+Che cos'è Express.js e in che modo estende le funzionalità di Node.js per lo sviluppo di applicazioni web?
+Come si gestisce l'I/O bloccante in un'applicazione Node.js per mantenere alte prestazioni?
+Qual è l'approccio raccomandato per la gestione degli errori in Node.js, in particolare in ambienti asincroni?
+Come si implementa un sistema di autenticazione in un'applicazione web basata su Node.js ed Express.js?
