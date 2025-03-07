@@ -1,6 +1,0 @@
-public class UpdateOperand {
-	private int operand;
-	private int num;
-	
-	
-}
