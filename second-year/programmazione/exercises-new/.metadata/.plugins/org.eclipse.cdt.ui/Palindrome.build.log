@@ -1,0 +1,8 @@
+14:58:43 **** Incremental Build of configuration Debug for project Palindrome ****
+Info: Internal Builder is used for build
+g++ -o Palindrome.exe Main.o 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file Palindrome.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+
+14:58:44 Build Failed. 1 errors, 0 warnings. (took 225ms)
+

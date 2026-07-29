@@ -1,0 +1,30 @@
+15:58:26 **** Incremental Build of configuration Debug for project ArrayWithoutDuplicates ****
+Info: Internal Builder is used for build
+g++ -o ArrayWithoutDuplicates.exe Main.o 
+Info: Nothing to build for ArrayWithoutDuplicates
+Info: Nothing to build for ArrayWithoutDuplicates
+15:59:54 **** Incremental Build of configuration Debug for project ArrayWithoutDuplicates ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o Main.o "..\\Main.cpp" 
+g++ -o ArrayWithoutDuplicates.exe Main.o 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file ArrayWithoutDuplicates.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+16:00:02 **** Incremental Build of configuration Debug for project ArrayWithoutDuplicates ****
+Info: Internal Builder is used for build
+g++ -o ArrayWithoutDuplicates.exe Main.o 
+Info: Nothing to build for ArrayWithoutDuplicates
+16:00:37 **** Incremental Build of configuration Debug for project ArrayWithoutDuplicates ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o Main.o "..\\Main.cpp" 
+g++ -o ArrayWithoutDuplicates.exe Main.o 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file ArrayWithoutDuplicates.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+16:00:50 **** Incremental Build of configuration Debug for project ArrayWithoutDuplicates ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o Main.o "..\\Main.cpp" 
+g++ -o ArrayWithoutDuplicates.exe Main.o 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file ArrayWithoutDuplicates.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+16:01:11 **** Incremental Build of configuration Debug for project ArrayWithoutDuplicates ****
+Info: Internal Builder is used for build
+g++ -o ArrayWithoutDuplicates.exe Main.o 

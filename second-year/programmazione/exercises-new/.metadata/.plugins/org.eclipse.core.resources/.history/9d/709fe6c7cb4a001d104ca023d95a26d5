@@ -1,0 +1,10 @@
+#include <iostream>
+using namespace std;
+#include "Library.h";
+#include "Library.cpp";
+
+int main() {
+	helloWorld();
+
+	return 0;
+}

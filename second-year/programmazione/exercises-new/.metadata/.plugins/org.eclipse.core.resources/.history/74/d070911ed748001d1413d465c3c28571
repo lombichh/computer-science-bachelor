@@ -1,0 +1,18 @@
+#include <cmath>
+#include <iostream>
+using namespace std;
+
+int invertInt(int num) {
+
+
+	return decimal;
+}
+
+int main() {
+	int binary;
+	cin >> binary;
+
+	cout << bin2Dec(binary);
+
+	return 0;
+}

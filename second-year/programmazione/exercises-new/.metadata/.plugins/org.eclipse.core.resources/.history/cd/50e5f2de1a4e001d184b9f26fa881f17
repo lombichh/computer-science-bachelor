@@ -1,0 +1,26 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+bool isInArray(int array[], int length, int n) {
+	bool isInArray = false;
+	for (int i = 0; i < length; i++) if (array[i] == n) isInArray = true;
+
+	return isInArray;
+}
+
+int main() {
+	int n;
+	cout << "Insert a number: ";
+	cin >> n;
+
+	srand(time(0));
+	int array[];
+	int length = rand();
+	for (int i = 0; i < length; i++) array[i] = rand();
+
+	isInArray(a, l, nu);
+
+	return 0;
+}

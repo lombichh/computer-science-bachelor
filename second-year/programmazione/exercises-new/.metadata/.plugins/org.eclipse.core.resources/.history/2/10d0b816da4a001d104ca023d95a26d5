@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int array[10];
+	array[0] = 0;
+
+	cout << array;
+
+	return 0;
+}

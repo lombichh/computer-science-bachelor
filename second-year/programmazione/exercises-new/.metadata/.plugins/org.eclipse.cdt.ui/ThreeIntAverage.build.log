@@ -1,0 +1,7 @@
+23:00:36 **** Rebuild of configuration Debug for project ThreeIntAverage ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o Main.o "..\\Main.cpp" 
+g++ -o ThreeIntAverage.exe Main.o 
+
+23:00:36 Build Finished. 0 errors, 0 warnings. (took 692ms)
+

@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+void foo(int& x, int& y) {
+	x = 1;
+	y = 2;
+}
+
+int main() {
+	int a;
+	int b;
+	a = 4;
+	b = 5;
+
+	foo(2 4);
+	cout << a << endl << b;
+
+	return 0;
+}

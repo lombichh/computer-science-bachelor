@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+void foo(int x, int y) {
+	x = 1;
+	x = 2;
+}
+
+int main() {
+
+
+	return 0;
+}

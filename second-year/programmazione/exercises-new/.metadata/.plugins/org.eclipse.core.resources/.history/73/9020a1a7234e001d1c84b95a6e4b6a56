@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+void coutWithoutDuplicates(int array[], int length) {
+	for (int i = 0; i < length; i++) {
+		bool isNotDuplicated = true;
+		int j = 0;
+		while (j < i && isNotDuplicated) {
+			if (array[j] == array[i]) isNotDuplicated = false;
+		}
+		if (isNotDuplicated) cout << "true";
+		if (isNotDuplicated) cout << "false";
+		if (isNotDuplicated) cout << i << ", ";
+	}
+}
+
+int main() {
+	srand(time(0));
+	int length = rand() % 10;
+
+	int array[length];
+	for (int i = 0; i < length; i++) {
+		array[i] = rand() % 10;
+		cout << array[i] << ", ";
+	}
+
+	cout << endl;
+	coutWithoutDuplicates(array, length);
+
+	return 0;
+}

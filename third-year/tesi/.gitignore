@@ -1,0 +1,47 @@
+data/
+global_model.pth
+global_model_old.pth
+thesis/thesis-speech.pdf
+
+# ==============================================================================
+# PYTHON & FLOWER (Source Code)
+# ==============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+.flwr
+*.so
+
+# Environments & Dependencies
+.env
+.venv
+env/
+venv/
+ENV/
+bin/
+lib/
+develop-eggs/
+dist/
+build/
+eggs/
+.eggs/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing & Coverage
+.cache
+.pytest_cache/
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+htmlcov/
+
+# Jupyter Notebook & IDEs
+.ipynb_checkpoints
+.vscode/
+.idea/
+*.swp
+*.swo
